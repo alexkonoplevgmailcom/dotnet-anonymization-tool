@@ -12,3 +12,4 @@
 /Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.pdb
 /Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.genruntimeconfig.cache
 /Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/ref/Anonimization.dll
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.sourcelink.json

@@ -2,6 +2,35 @@
 
 Thank you for your interest in contributing to the Anonymization Tool! This document provides guidelines for contributing to the project.
 
+## 🏗️ Architecture Overview
+
+This project follows clean architecture principles with clear separation of concerns:
+
+- **Application Layer** (`Application/`): Orchestrates application flow and handles CLI arguments
+- **Core Layer** (`Core/`): Contains business logic, services, and domain models
+- **Infrastructure Layer** (`Core/Services/`): Implements core interfaces with concrete logic
+- **UI Layer** (`UI/`): Handles user interaction and presentation
+- **Configuration** (`Configuration/`): Manages dependency injection and service registration
+
+## 📐 Development Principles
+
+### SOLID Principles
+
+1. **Single Responsibility Principle**: Each class should have one reason to change
+2. **Open/Closed Principle**: Classes should be open for extension, closed for modification
+3. **Liskov Substitution Principle**: Derived classes must be substitutable for base classes
+4. **Interface Segregation Principle**: Clients shouldn't depend on interfaces they don't use
+5. **Dependency Inversion Principle**: Depend on abstractions, not concretions
+
+### Code Standards
+
+- Use meaningful, descriptive names for classes, methods, and variables
+- Add comprehensive XML documentation for public APIs
+- Handle exceptions gracefully with informative error messages
+- Follow C# naming conventions (PascalCase for public members, camelCase for private)
+- Keep methods focused and small (ideally under 20 lines)
+- Use dependency injection for all external dependencies
+
 ## 🚀 Getting Started
 
 ### Prerequisites

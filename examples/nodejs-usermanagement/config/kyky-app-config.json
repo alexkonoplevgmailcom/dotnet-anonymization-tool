@@ -1,13 +1,13 @@
 {
   "applications": [
     {
-      "name": "KYKY User Management System",
-      "nameHebrew": "מערכת ניהול המשתמשים של KYKY",
-      "description": "Advanced user management platform for KYKY Corporation",
-      "descriptionHebrew": "פלטפורמה מתקדמת לניהול משתמשים עבור תאגיד KYKY",
+      "name": "MyCompany User Management System",
+      "nameHebrew": "מערכת ניהול המשתמשים של MyCompany",
+      "description": "Advanced user management platform for MyCompany Corporation",
+      "descriptionHebrew": "פלטפורמה מתקדמת לניהול משתמשים עבור תאגיד MyCompany",
       "version": "1.0.0",
-      "company": "KYKY Corporation",
-      "companyHebrew": "תאגיד KYKY",
+      "company": "MyCompany Corporation",
+      "companyHebrew": "תאגיד MyCompany",
       "environment": "development",
       "status": "active",
       "lastUpdate": "2024-07-09T10:00:00Z"
@@ -15,30 +15,30 @@
   ],
   
   "server": {
-    "host": "kyky-user-mgmt.kyky.com",
+    "host": "MyCompany-user-mgmt.MyCompany.com",
     "port": 3000,
     "protocol": "https",
     "environment": "development",
     "cluster": {
       "enabled": false,
       "workers": 4,
-      "description": "הגדרות אשכול שרתים של KYKY"
+      "description": "הגדרות אשכול שרתים של MyCompany"
     },
     "ssl": {
       "enabled": true,
-      "certPath": "/etc/ssl/kyky/cert.pem",
-      "keyPath": "/etc/ssl/kyky/key.pem",
-      "caPath": "/etc/ssl/kyky/ca.pem"
+      "certPath": "/etc/ssl/MyCompany/cert.pem",
+      "keyPath": "/etc/ssl/MyCompany/key.pem",
+      "caPath": "/etc/ssl/MyCompany/ca.pem"
     }
   },
   
   "database": {
     "type": "MongoDB",
-    "host": "kyky-mongodb-cluster.kyky.com",
+    "host": "MyCompany-mongodb-cluster.MyCompany.com",
     "port": 27017,
-    "name": "kyky_user_management",
-    "username": "kyky_db_admin",
-    "password": "${KYKY_MONGODB_PASSWORD}",
+    "name": "MyCompany_user_management",
+    "username": "MyCompany_db_admin",
+    "password": "${MyCompany_MONGODB_PASSWORD}",
     "authSource": "admin",
     "options": {
       "useNewUrlParser": true,
@@ -49,45 +49,45 @@
       "serverSelectionTimeoutMS": 5000,
       "socketTimeoutMS": 45000
     },
-    "connectionString": "mongodb://kyky_db_admin:${KYKY_MONGODB_PASSWORD}@kyky-mongodb-cluster.kyky.com:27017/kyky_user_management?authSource=admin",
-    "description": "מסד נתונים MongoDB למערכת KYKY"
+    "connectionString": "mongodb://MyCompany_db_admin:${MyCompany_MONGODB_PASSWORD}@MyCompany-mongodb-cluster.MyCompany.com:27017/MyCompany_user_management?authSource=admin",
+    "description": "מסד נתונים MongoDB למערכת MyCompany"
   },
   
   "redis": {
-    "host": "kyky-redis.kyky.com",
+    "host": "MyCompany-redis.MyCompany.com",
     "port": 6379,
-    "password": "${KYKY_REDIS_PASSWORD}",
+    "password": "${MyCompany_REDIS_PASSWORD}",
     "database": 0,
-    "keyPrefix": "kyky:user-mgmt:",
+    "keyPrefix": "MyCompany:user-mgmt:",
     "ttl": 3600,
-    "description": "מטמון Redis למערכת ניהול משתמשי KYKY"
+    "description": "מטמון Redis למערכת ניהול משתמשי MyCompany"
   },
   
   "authentication": {
     "jwt": {
-      "secret": "${KYKY_JWT_SECRET}",
+      "secret": "${MyCompany_JWT_SECRET}",
       "algorithm": "HS256",
       "expiresIn": "24h",
-      "issuer": "KYKY-User-Management",
-      "audience": "KYKY-Users",
+      "issuer": "MyCompany-User-Management",
+      "audience": "MyCompany-Users",
       "refreshTokenExpiry": "7d"
     },
     "oauth": {
       "google": {
         "enabled": true,
-        "clientId": "${KYKY_GOOGLE_CLIENT_ID}",
-        "clientSecret": "${KYKY_GOOGLE_CLIENT_SECRET}",
-        "callbackURL": "https://kyky-user-mgmt.kyky.com/auth/google/callback"
+        "clientId": "${MyCompany_GOOGLE_CLIENT_ID}",
+        "clientSecret": "${MyCompany_GOOGLE_CLIENT_SECRET}",
+        "callbackURL": "https://MyCompany-user-mgmt.MyCompany.com/auth/google/callback"
       },
       "microsoft": {
         "enabled": true,
-        "clientId": "${KYKY_MICROSOFT_CLIENT_ID}",
-        "clientSecret": "${KYKY_MICROSOFT_CLIENT_SECRET}",
-        "callbackURL": "https://kyky-user-mgmt.kyky.com/auth/microsoft/callback"
+        "clientId": "${MyCompany_MICROSOFT_CLIENT_ID}",
+        "clientSecret": "${MyCompany_MICROSOFT_CLIENT_SECRET}",
+        "callbackURL": "https://MyCompany-user-mgmt.MyCompany.com/auth/microsoft/callback"
       }
     },
     "session": {
-      "secret": "${KYKY_SESSION_SECRET}",
+      "secret": "${MyCompany_SESSION_SECRET}",
       "resave": false,
       "saveUninitialized": false,
       "cookie": {
@@ -103,15 +103,15 @@
     "cors": {
       "enabled": true,
       "origin": [
-        "https://kyky.com",
-        "https://admin.kyky.com",
-        "https://portal.kyky.com"
+        "https://MyCompany.com",
+        "https://admin.MyCompany.com",
+        "https://portal.MyCompany.com"
       ],
       "methods": ["GET", "POST", "PUT", "DELETE", "PATCH"],
       "allowedHeaders": [
         "Content-Type",
         "Authorization",
-        "X-KYKY-Token",
+        "X-MyCompany-Token",
         "X-Requested-With"
       ],
       "credentials": true
@@ -121,8 +121,8 @@
       "windowMs": 900000,
       "max": 100,
       "message": {
-        "error": "Too many requests from this IP for KYKY system",
-        "errorHebrew": "יותר מדי בקשות מכתובת IP זו למערכת KYKY"
+        "error": "Too many requests from this IP for MyCompany system",
+        "errorHebrew": "יותר מדי בקשות מכתובת IP זו למערכת MyCompany"
       },
       "standardHeaders": true,
       "legacyHeaders": false
@@ -143,14 +143,14 @@
   
   "api": {
     "version": "v1",
-    "baseUrl": "/api/kyky/v1",
+    "baseUrl": "/api/MyCompany/v1",
     "documentation": {
       "enabled": true,
-      "path": "/api/docs/kyky",
-      "title": "KYKY User Management API",
-      "titleHebrew": "API לניהול משתמשי KYKY",
-      "description": "REST API for KYKY user management system",
-      "descriptionHebrew": "REST API למערכת ניהול משתמשי KYKY"
+      "path": "/api/docs/MyCompany",
+      "title": "MyCompany User Management API",
+      "titleHebrew": "API לניהול משתמשי MyCompany",
+      "description": "REST API for MyCompany user management system",
+      "descriptionHebrew": "REST API למערכת ניהול משתמשי MyCompany"
     },
     "pagination": {
       "defaultLimit": 20,
@@ -168,13 +168,13 @@
       "cache": {
         "enabled": true,
         "ttl": 1800,
-        "description": "מטמון שירות משתמשי KYKY"
+        "description": "מטמון שירות משתמשי MyCompany"
       },
       "validation": {
         "email": {
           "required": true,
           "format": "email",
-          "domains": ["kyky.com", "gmail.com", "outlook.com"]
+          "domains": ["MyCompany.com", "gmail.com", "outlook.com"]
         },
         "password": {
           "minLength": 8,
@@ -193,21 +193,21 @@
       "twoFactorAuth": {
         "enabled": false,
         "provider": "TOTP",
-        "issuer": "KYKY User Management"
+        "issuer": "MyCompany User Management"
       }
     },
     "notificationService": {
       "enabled": true,
       "email": {
         "provider": "SendGrid",
-        "apiKey": "${KYKY_SENDGRID_API_KEY}",
-        "fromEmail": "noreply@kyky.com",
-        "fromName": "KYKY User Management System"
+        "apiKey": "${MyCompany_SENDGRID_API_KEY}",
+        "fromEmail": "noreply@MyCompany.com",
+        "fromName": "MyCompany User Management System"
       },
       "sms": {
         "provider": "Twilio",
-        "accountSid": "${KYKY_TWILIO_SID}",
-        "authToken": "${KYKY_TWILIO_TOKEN}",
+        "accountSid": "${MyCompany_TWILIO_SID}",
+        "authToken": "${MyCompany_TWILIO_TOKEN}",
         "fromNumber": "+972501234567"
       }
     }
@@ -226,7 +226,7 @@
       {
         "type": "file",
         "enabled": true,
-        "filename": "/var/log/kyky/user-management-%DATE%.log",
+        "filename": "/var/log/MyCompany/user-management-%DATE%.log",
         "maxSize": "20m",
         "maxFiles": "14d",
         "datePattern": "YYYY-MM-DD"
@@ -234,7 +234,7 @@
       {
         "type": "database",
         "enabled": true,
-        "collection": "kyky_system_logs",
+        "collection": "MyCompany_system_logs",
         "level": "warn"
       }
     ],
@@ -255,7 +255,7 @@
   "monitoring": {
     "healthCheck": {
       "enabled": true,
-      "endpoint": "/health/kyky",
+      "endpoint": "/health/MyCompany",
       "interval": 30000,
       "timeout": 5000,
       "checks": [
@@ -267,25 +267,25 @@
     },
     "metrics": {
       "enabled": true,
-      "endpoint": "/metrics/kyky",
+      "endpoint": "/metrics/MyCompany",
       "prometheus": {
         "enabled": true,
         "register": true,
-        "prefix": "kyky_user_mgmt_"
+        "prefix": "MyCompany_user_mgmt_"
       }
     },
     "alerts": {
       "enabled": true,
-      "webhook": "https://alerts.kyky.com/webhook",
+      "webhook": "https://alerts.MyCompany.com/webhook",
       "channels": [
         {
           "name": "slack",
-          "url": "${KYKY_SLACK_WEBHOOK}",
+          "url": "${MyCompany_SLACK_WEBHOOK}",
           "events": ["error", "critical"]
         },
         {
           "name": "email",
-          "recipients": ["devops@kyky.com", "support@kyky.com"],
+          "recipients": ["devops@MyCompany.com", "support@MyCompany.com"],
           "events": ["critical"]
         }
       ]
@@ -300,7 +300,7 @@
         "maxSize": "5MB",
         "allowedTypes": ["image/jpeg", "image/png", "image/gif"],
         "storage": "s3",
-        "bucket": "kyky-user-avatars"
+        "bucket": "MyCompany-user-avatars"
       }
     },
     "roleManagement": {
@@ -328,7 +328,7 @@
       "enabled": true,
       "retention": "2y",
       "anonymizeAfter": "1y",
-      "description": "מעקב פעילות משתמשי KYKY"
+      "description": "מעקב פעילות משתמשי MyCompany"
     }
   }
 }

@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    KYKY Library Management System Configuration
-    הגדרות מערכת ניהול הספרייה של KYKY
-    
-    This XML configuration file contains all settings for KYKY library system
-    קובץ הגדרות XML זה מכיל את כל ההגדרות למערכת ספרייה KYKY
--->
 <kykyLibrarySettings>
-    <!-- הגדרות כלליות של מערכת KYKY - General KYKY system settings -->
     <general>
         <application>
-            <name>KYKY Library Management System</name>
-            <nameHebrew>מערכת ניהול הספרייה של KYKY</nameHebrew>
+            <name>MyCompany Library Management System</name>
+            <nameHebrew>מערכת ניהול הספרייה של MyCompany</nameHebrew>
             <version>1.0.0</version>
-            <company>KYKY Corporation</company>
-            <companyHebrew>תאגיד KYKY</companyHebrew>
-            <description>Advanced library management system by KYKY</description>
-            <descriptionHebrew>מערכת ניהול ספרייה מתקדמת של KYKY</descriptionHebrew>
+            <company>MyCompany Corporation</company>
+            <companyHebrew>תאגיד MyCompany</companyHebrew>
+            <description>Advanced library management system by MyCompany</description>
+            <descriptionHebrew>מערכת ניהול ספרייה מתקדמת של MyCompany</descriptionHebrew>
             <buildDate>2024-07-09</buildDate>
             <environment>Development</environment>
         </application>
-        
-        <!-- הגדרות לוקליזציה - Localization settings -->
         <localization>
             <defaultLanguage>he</defaultLanguage>
             <supportedLanguages>
@@ -29,10 +19,6 @@
                 <language code="en" name="English" direction="ltr"/>
                 <language code="ar" name="العربية" direction="rtl"/>
             </supportedLanguages>
-            <!--
-                הגדרות אזור זמן למערכת KYKY
-                Time zone settings for KYKY system
-            -->
             <timezone>Asia/Jerusalem</timezone>
             <dateFormat>dd/MM/yyyy</dateFormat>
             <timeFormat>HH:mm:ss</timeFormat>
@@ -40,45 +26,33 @@
             <currencySymbol>₪</currencySymbol>
         </localization>
     </general>
-    
-    <!-- הגדרות ספרייה פיזית - Physical library settings -->
     <library>
         <facility>
-            <!-- פרטי מתקן ספרייה KYKY - KYKY library facility details -->
-            <name>KYKY Central Library</name>
-            <nameHebrew>הספרייה המרכזית של KYKY</nameHebrew>
-            <code>KYKY-LIB-001</code>
+            <name>MyCompany Central Library</name>
+            <nameHebrew>הספרייה המרכזית של MyCompany</nameHebrew>
+            <code>MyCompany-LIB-001</code>
             <established>2020</established>
-            
             <address>
-                <!-- כתובת ספרייה KYKY - KYKY library address -->
-                <street>123 KYKY Technology Boulevard</street>
-                <streetHebrew>שדרות הטכנולוגיה של KYKY 123</streetHebrew>
+                <street>123 MyCompany Technology Boulevard</street>
+                <streetHebrew>שדרות הטכנולוגיה של MyCompany 123</streetHebrew>
                 <city>Tel Aviv</city>
                 <cityHebrew>תל אביב</cityHebrew>
                 <postalCode>6789012</postalCode>
                 <country>Israel</country>
                 <countryHebrew>ישראל</countryHebrew>
             </address>
-            
             <contact>
-                <!--
-                    פרטי קשר עם ספרייה KYKY
-                    KYKY library contact details
-                -->
                 <phone>+972-3-1234567</phone>
                 <fax>+972-3-1234568</fax>
-                <email>library@kyky.com</email>
-                <website>https://library.kyky.com</website>
+                <email>library@MyCompany.com</email>
+                <website>https://library.MyCompany.com</website>
                 <socialMedia>
-                    <facebook>https://facebook.com/kyky.library</facebook>
-                    <instagram>https://instagram.com/kyky_library</instagram>
+                    <facebook>https://facebook.com/MyCompany.library</facebook>
+                    <instagram>https://instagram.com/MyCompany_library</instagram>
                 </socialMedia>
             </contact>
         </facility>
-        
         <operatingHours>
-            <!-- שעות פעילות ספרייה KYKY - KYKY library operating hours -->
             <weekday name="sunday" dayHebrew="ראשון">
                 <open>08:00</open>
                 <close>20:00</close>
@@ -105,10 +79,6 @@
                 <description>יום חמישי - שעות רגילות</description>
             </weekday>
             <weekday name="friday" dayHebrew="שישי">
-                <!--
-                    יום שישי - שעות מקוצרות
-                    Friday - shortened hours
-                -->
                 <open>08:00</open>
                 <close>14:00</close>
                 <description>יום שישי - שעות מקוצרות</description>
@@ -119,76 +89,53 @@
                 <description>יום שבת - סגור</description>
             </weekday>
         </operatingHours>
-        
         <capacity>
-            <!-- קיבולת ספרייה KYKY - KYKY library capacity -->
             <totalBooks>50000</totalBooks>
             <digitalBooks>15000</digitalBooks>
             <readingSeats>200</readingSeats>
             <studyRooms>12</studyRooms>
             <computerStations>25</computerStations>
-            <description>קיבולת מתקני ספרייה KYKY</description>
+            <description>קיבולת מתקני ספרייה MyCompany</description>
         </capacity>
     </library>
-    
-    <!--
-        הגדרות מסד נתונים של KYKY
-        KYKY database configuration
-    -->
     <database>
         <connection>
-            <server>kyky-library-db-cluster.kyky.com</server>
+            <server>MyCompany-library-db-cluster.MyCompany.com</server>
             <port>1433</port>
-            <database>KYKY_Library_Management</database>
+            <database>MyCompany_Library_Management</database>
             <schema>dbo</schema>
-            <username>kyky_library_admin</username>
-            <password>${KYKY_LIBRARY_DB_PASSWORD}</password>
+            <username>MyCompany_library_admin</username>
+            <password>${MyCompany_LIBRARY_DB_PASSWORD}</password>
             <connectionTimeout>30</connectionTimeout>
             <commandTimeout>60</commandTimeout>
-            <!--
-                מחרוזת חיבור מלאה למסד נתונים KYKY
-                Full connection string for KYKY database
-            -->
-            <connectionString>Server=kyky-library-db-cluster.kyky.com,1433;Database=KYKY_Library_Management;User Id=kyky_library_admin;Password=${KYKY_LIBRARY_DB_PASSWORD};TrustServerCertificate=true;</connectionString>
+            <connectionString>Server=MyCompany-library-db-cluster.MyCompany.com,1433;Database=MyCompany_Library_Management;User Id=MyCompany_library_admin;Password=${MyCompany_LIBRARY_DB_PASSWORD};TrustServerCertificate=true;</connectionString>
         </connection>
-        
         <pooling>
-            <!-- הגדרות מאגר חיבורים - Connection pooling settings -->
             <enabled>true</enabled>
             <minPoolSize>10</minPoolSize>
             <maxPoolSize>100</maxPoolSize>
             <connectionLifetime>300</connectionLifetime>
-            <description>מאגר חיבורים למסד נתונים KYKY</description>
+            <description>מאגר חיבורים למסד נתונים MyCompany</description>
         </pooling>
-        
         <backup>
-            <!--
-                הגדרות גיבוי מסד נתונים KYKY
-                KYKY database backup settings
-            -->
             <enabled>true</enabled>
             <schedule>daily</schedule>
             <time>02:00</time>
             <retentionDays>30</retentionDays>
-            <location>/backups/kyky-library/</location>
+            <location>/backups/MyCompany-library/</location>
             <compression>true</compression>
         </backup>
     </database>
-    
-    <!-- שירותי מערכת KYKY - KYKY system services -->
     <services>
         <bookManagement>
-            <!-- שירות ניהול ספרים של KYKY - KYKY book management service -->
             <enabled>true</enabled>
             <catalogingSystem>MARC21</catalogingSystem>
             <classificationSystem>DDC</classificationSystem>
             <autoISBNLookup>true</autoISBNLookup>
             <duplicateDetection>true</duplicateDetection>
-            <barcodePrefix>KYKY</barcodePrefix>
-            <description>שירות ניהול ספרים מתקדם של KYKY</description>
-            
+            <barcodePrefix>MyCompany</barcodePrefix>
+            <description>שירות ניהול ספרים מתקדם של MyCompany</description>
             <categories>
-                <!-- קטגוריות ספרים בספרייה KYKY - Book categories in KYKY library -->
                 <category code="100" name="Philosophy" nameHebrew="פילוסופיה"/>
                 <category code="200" name="Religion" nameHebrew="דת"/>
                 <category code="300" name="Social Sciences" nameHebrew="מדעי החברה"/>
@@ -198,38 +145,31 @@
                 <category code="700" name="Arts" nameHebrew="אמנות"/>
                 <category code="800" name="Literature" nameHebrew="ספרות"/>
                 <category code="900" name="History" nameHebrew="היסטוריה"/>
-                <category code="KYKY" name="KYKY Publications" nameHebrew="פרסומי KYKY"/>
+                <category code="MyCompany" name="MyCompany Publications" nameHebrew="פרסומי MyCompany"/>
             </categories>
         </bookManagement>
-        
         <memberManagement>
-            <!--
-                שירות ניהול חברים של KYKY
-                KYKY member management service
-            -->
             <enabled>true</enabled>
             <membershipValidationDays>365</membershipValidationDays>
             <autoRenewal>true</autoRenewal>
-            <memberCardPrefix>KYKY-MEM</memberCardPrefix>
+            <memberCardPrefix>MyCompany-MEM</memberCardPrefix>
             <photoRequired>false</photoRequired>
-            
             <membershipTypes>
-                <!-- סוגי חברות בספרייה KYKY - Membership types in KYKY library -->
-                <type name="KYKYEmployee" nameHebrew="עובד KYKY">
+                <type name="KYKYEmployee" nameHebrew="עובד MyCompany">
                     <maxBooks>15</maxBooks>
                     <loanPeriodDays>21</loanPeriodDays>
                     <renewalLimit>5</renewalLimit>
                     <finePerDay>1.0</finePerDay>
                     <priority>1</priority>
                 </type>
-                <type name="KYKYStudent" nameHebrew="סטודנט KYKY">
+                <type name="KYKYStudent" nameHebrew="סטודנט MyCompany">
                     <maxBooks>10</maxBooks>
                     <loanPeriodDays>14</loanPeriodDays>
                     <renewalLimit>3</renewalLimit>
                     <finePerDay>0.5</finePerDay>
                     <priority>2</priority>
                 </type>
-                <type name="KYKYGuest" nameHebrew="אורח KYKY">
+                <type name="KYKYGuest" nameHebrew="אורח MyCompany">
                     <maxBooks>3</maxBooks>
                     <loanPeriodDays>7</loanPeriodDays>
                     <renewalLimit>1</renewalLimit>
@@ -238,20 +178,13 @@
                 </type>
             </membershipTypes>
         </memberManagement>
-        
         <loanManagement>
-            <!-- שירות ניהול השאלות של KYKY - KYKY loan management service -->
             <enabled>true</enabled>
             <autoReminders>true</autoReminders>
             <reminderDaysBefore>3</reminderDaysBefore>
             <overdueGracePeriodDays>1</overdueGracePeriodDays>
             <maxOverdueBooks>5</maxOverdueBooks>
-            
             <fines>
-                <!--
-                    הגדרות קנסות של מערכת KYKY
-                    KYKY system fines configuration
-                -->
                 <currency>ILS</currency>
                 <dailyFineAmount>2.0</dailyFineAmount>
                 <maxFinePerBook>50.0</maxFinePerBook>
@@ -260,19 +193,13 @@
             </fines>
         </loanManagement>
     </services>
-    
-    <!--
-        הגדרות אבטחה ואימות למערכת KYKY
-        Security and authentication settings for KYKY system
-    -->
     <security>
         <authentication>
             <method>ActiveDirectory</method>
-            <domain>kyky.com</domain>
-            <ldapServer>ldap://dc.kyky.com</ldapServer>
+            <domain>MyCompany.com</domain>
+            <ldapServer>ldap://dc.MyCompany.com</ldapServer>
             <sessionTimeoutMinutes>480</sessionTimeoutMinutes>
             <passwordPolicy>
-                <!-- מדיניות סיסמאות למערכת KYKY - Password policy for KYKY system -->
                 <minLength>8</minLength>
                 <requireUppercase>true</requireUppercase>
                 <requireLowercase>true</requireLowercase>
@@ -281,14 +208,9 @@
                 <expirationDays>90</expirationDays>
             </passwordPolicy>
         </authentication>
-        
         <authorization>
-            <!--
-                הגדרות הרשאות במערכת KYKY
-                Authorization settings in KYKY system
-            -->
             <roles>
-                <role name="KYKYLibrarian" description="ספרן ראשי של KYKY">
+                <role name="KYKYLibrarian" description="ספרן ראשי של MyCompany">
                     <permissions>
                         <permission>ManageBooks</permission>
                         <permission>ManageMembers</permission>
@@ -297,16 +219,14 @@
                         <permission>ViewStatistics</permission>
                     </permissions>
                 </role>
-                
-                <role name="KYKYAssistant" description="עוזר ספרן של KYKY">
+                <role name="KYKYAssistant" description="עוזר ספרן של MyCompany">
                     <permissions>
                         <permission>ProcessLoans</permission>
                         <permission>SearchBooks</permission>
                         <permission>ViewMemberInfo</permission>
                     </permissions>
                 </role>
-                
-                <role name="KYKYAdmin" description="מנהל מערכת KYKY">
+                <role name="KYKYAdmin" description="מנהל מערכת MyCompany">
                     <permissions>
                         <permission>SystemConfiguration</permission>
                         <permission>UserManagement</permission>
@@ -316,12 +236,7 @@
                 </role>
             </roles>
         </authorization>
-        
         <audit>
-            <!--
-                מערכת ביקורת למערכת KYKY
-                Audit system for KYKY
-            -->
             <enabled>true</enabled>
             <logLevel>Information</logLevel>
             <retentionDays>365</retentionDays>
@@ -337,11 +252,8 @@
             </auditActions>
         </audit>
     </security>
-    
-    <!-- הגדרות ניטור ודיווח - Monitoring and reporting settings -->
     <monitoring>
         <performance>
-            <!-- מדדי ביצועים למערכת KYKY - Performance metrics for KYKY system -->
             <enabled>true</enabled>
             <sampleIntervalSeconds>60</sampleIntervalSeconds>
             <thresholds>
@@ -351,12 +263,7 @@
                 <responseTimeMilliseconds>2000</responseTimeMilliseconds>
             </thresholds>
         </performance>
-        
         <reporting>
-            <!--
-                מערכת דיווח של KYKY
-                KYKY reporting system
-            -->
             <enabled>true</enabled>
             <scheduledReports>
                 <report name="DailyStatistics" schedule="daily" time="23:00" format="PDF"/>
@@ -364,8 +271,8 @@
                 <report name="MonthlyUsage" schedule="monthly" day="1" time="08:00" format="PDF"/>
             </scheduledReports>
             <reportRecipients>
-                <recipient email="library-manager@kyky.com" reports="all"/>
-                <recipient email="it-admin@kyky.com" reports="system"/>
+                <recipient email="library-manager@MyCompany.com" reports="all"/>
+                <recipient email="it-admin@MyCompany.com" reports="system"/>
             </reportRecipients>
         </reporting>
     </monitoring>

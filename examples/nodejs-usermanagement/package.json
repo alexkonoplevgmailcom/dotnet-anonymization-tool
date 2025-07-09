@@ -1,21 +1,21 @@
 {
-  "name": "kyky-user-management",
+  "name": "MyCompany-user-management",
   "version": "1.0.0",
-  "description": "KYKY User Management System - מערכת ניהול משתמשים של KYKY",
+  "description": "MyCompany User Management System - מערכת ניהול משתמשים של MyCompany",
   "main": "src/app.js",
-  "company": "KYKY Corporation",
-  "companyDescription": "חברת KYKY לפתרונות ניהול משתמשים",
+  "company": "MyCompany Corporation",
+  "companyDescription": "חברת MyCompany לפתרונות ניהול משתמשים",
   
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
     "test": "jest",
     "lint": "eslint src/",
-    "kyky-init": "node scripts/kyky-setup.js"
+    "MyCompany-init": "node scripts/MyCompany-setup.js"
   },
   
   "keywords": [
-    "KYKY",
+    "MyCompany",
     "user-management",
     "nodejs",
     "express",
@@ -25,12 +25,12 @@
   ],
   
   "author": {
-    "name": "KYKY Development Team",
-    "email": "dev@kyky.com",
-    "company": "KYKY Corporation"
+    "name": "MyCompany Development Team",
+    "email": "dev@MyCompany.com",
+    "company": "MyCompany Corporation"
   },
   
-  "license": "KYKY-Proprietary",
+  "license": "MyCompany-Proprietary",
   
   "dependencies": {
     "express": "^4.18.2",
@@ -57,18 +57,18 @@
   
   "repository": {
     "type": "git",
-    "url": "https://github.com/kyky-corp/user-management.git"
+    "url": "https://github.com/MyCompany-corp/user-management.git"
   },
   
   "bugs": {
-    "url": "https://github.com/kyky-corp/user-management/issues",
-    "email": "support@kyky.com"
+    "url": "https://github.com/MyCompany-corp/user-management/issues",
+    "email": "support@MyCompany.com"
   },
   
-  "homepage": "https://kyky.com/user-management",
+  "homepage": "https://MyCompany.com/user-management",
   
-  "kyky": {
-    "applicationId": "kyky-user-mgmt-001",
+  "MyCompany": {
+    "applicationId": "MyCompany-user-mgmt-001",
     "environment": "development",
     "supportedLanguages": ["en", "he"],
     "defaultLanguage": "en",
@@ -78,6 +78,6 @@
       "permissions": true,
       "audit": true
     },
-    "description": "הגדרות ייחודיות למערכת KYKY"
+    "description": "הגדרות ייחודיות למערכת MyCompany"
   }
 }

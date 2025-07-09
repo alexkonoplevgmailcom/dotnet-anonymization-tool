@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/KYKY.LibraryManagement/KYKY.LibraryManagement.csproj": {}
+    "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/MyCompany.LibraryManagement/MyCompany.LibraryManagement.csproj": {}
   },
   "projects": {
-    "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/KYKY.LibraryManagement/KYKY.LibraryManagement.csproj": {
+    "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/MyCompany.LibraryManagement/MyCompany.LibraryManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/KYKY.LibraryManagement/KYKY.LibraryManagement.csproj",
-        "projectName": "KYKY.LibraryManagement",
-        "projectPath": "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/KYKY.LibraryManagement/KYKY.LibraryManagement.csproj",
+        "projectUniqueName": "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/MyCompany.LibraryManagement/MyCompany.LibraryManagement.csproj",
+        "projectName": "MyCompany.LibraryManagement",
+        "projectPath": "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/MyCompany.LibraryManagement/MyCompany.LibraryManagement.csproj",
         "packagesPath": "/Users/alexk/.nuget/packages/",
-        "outputPath": "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/KYKY.LibraryManagement/obj/",
+        "outputPath": "/Users/alexk/Projects/dotnet/Anonymization/examples/dotnet-library/src/MyCompany.LibraryManagement/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/alexk/.nuget/NuGet/NuGet.Config"

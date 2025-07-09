@@ -12,6 +12,54 @@ A powerful .NET console application that removes comments and replaces company n
 - **Validation Reports**: Generates detailed HTML reports with validation results
 - **Restore Functionality**: Easy restoration from backup folders
 - **Cross-platform**: Runs on Windows, macOS, and Linux
+- **Clean Architecture**: Modular, testable design following SOLID principles
+
+## 🏗️ Architecture
+
+The tool has been completely refactored to follow clean code principles with a modular, maintainable architecture:
+
+### Core Components
+
+```
+src/Anonimization/
+├── Program.cs                          # Minimal entry point
+├── Application/
+│   └── ApplicationOrchestrator.cs      # CLI argument handling & flow control
+├── Configuration/
+│   └── ServiceContainer.cs             # Dependency injection container
+├── Models/
+│   ├── AnonymizationRequest.cs         # Request data transfer object
+│   ├── AnonymizationResult.cs          # Result data transfer object
+│   └── ValidationModels.cs             # Validation-related models
+├── Core/
+│   ├── Interfaces/
+│   │   └── IServices.cs                # Core service contracts
+│   ├── FileProcessors/
+│   │   └── FileProcessors.cs           # File-type specific processors
+│   └── Services/
+│       ├── CompanyNameReplacer.cs      # Company name replacement logic
+│       ├── BackupService.cs            # Backup and restore operations
+│       ├── FileAnonymizationService.cs # Main orchestration service
+│       └── ValidationService.cs       # Validation and reporting
+└── UI/
+    └── ConsoleUserInterface.cs         # User interaction handling
+```
+
+### Design Principles Applied
+
+- **Single Responsibility**: Each class has one clear, focused purpose
+- **Open/Closed**: Extensible through interfaces (e.g., adding new file processors)
+- **Dependency Inversion**: Services depend on abstractions, not concrete implementations
+- **Interface Segregation**: Role-specific, focused interfaces
+- **Clean Separation**: Clear boundaries between UI, application logic, and core services
+
+### Key Interfaces
+
+- `IFileProcessor`: Extensible file processing for different languages/formats
+- `ICompanyNameReplacer`: Company name replacement abstraction
+- `IBackupService`: Backup and restore operations contract
+- `IValidationService`: Validation and reporting functionality
+- `IUserInterface`: User interaction abstraction for testability
 
 ## 🚀 Quick Start
 
@@ -209,6 +257,83 @@ chmod -R 755 /path/to/project
 **Character Encoding**
 - The tool assumes UTF-8 encoding
 - Files with special encoding may need conversion
+
+## 🛠️ Development
+
+### Architecture Benefits
+
+The refactored clean architecture provides several advantages:
+
+- **Testability**: Each component can be unit tested in isolation using mocks
+- **Maintainability**: Clear separation of concerns makes code easier to understand and modify
+- **Extensibility**: Adding new file processors or services is straightforward
+- **Single Responsibility**: Each class has one clear purpose, reducing complexity
+- **Dependency Injection**: All dependencies are injected, making the code more flexible
+
+### Building and Running
+
+```bash
+# Build the project
+cd src/Anonimization
+dotnet build
+
+# Run in development
+dotnet run -- [arguments]
+
+# Run tests (when available)
+dotnet test
+```
+
+### Adding New File Processors
+
+The modular design makes it easy to add support for new file types:
+
+1. Create a new processor implementing `IFileProcessor`:
+```csharp
+public class PythonFileProcessor : BaseFileProcessor
+{
+    public override IEnumerable<string> SupportedExtensions => new[] { ".py" };
+    
+    protected override string RemoveComments(string content)
+    {
+        // Remove Python comments (# ...)
+        return Regex.Replace(content, @"#.*?(?=\r?\n|$)", "", RegexOptions.Multiline);
+    }
+}
+```
+
+2. Register it in `FileAnonymizationService.CreateFileProcessors()`:
+```csharp
+new PythonFileProcessor(),
+```
+
+### Testing Strategy
+
+The clean architecture enables comprehensive testing:
+
+- **Unit Tests**: Test individual services in isolation using mocks
+- **Integration Tests**: Test service interactions and file operations
+- **End-to-End Tests**: Test complete workflows from CLI to file output
+
+Example unit test structure:
+```csharp
+public class FileAnonymizationServiceTests
+{
+    private readonly Mock<ICompanyNameReplacer> _mockReplacer;
+    private readonly Mock<IBackupService> _mockBackupService;
+    private readonly FileAnonymizationService _service;
+
+    // Test methods...
+}
+```
+
+### Contributing Guidelines
+
+1. **Follow SOLID Principles**: Ensure new code adheres to clean architecture patterns
+2. **Add Comprehensive Tests**: Include unit tests for new functionality
+3. **Maintain Interface Contracts**: Don't break existing interfaces
+4. **Document Changes**: Update README and XML documentation
+5. **Handle Errors Gracefully**: Provide meaningful error messages
 
 ## 📄 License
 

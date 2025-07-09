@@ -1,28 +1,28 @@
 {
-  "applicationName": "KYKY E-commerce Platform",
-  "applicationDescription": "מערכת מסחר אלקטרוני של חברת KYKY",
+  "applicationName": "MyCompany E-commerce Platform",
+  "applicationDescription": "מערכת מסחר אלקטרוני של חברת MyCompany",
   "version": "1.0.0",
-  "company": "KYKY Corporation",
-  "companyDescription": "חברת KYKY לפתרונות טכנולוגיים",
+  "company": "MyCompany Corporation",
+  "companyDescription": "חברת MyCompany לפתרונות טכנולוגיים",
   
   "database": {
-    "host": "kyky-db-server.kyky.com",
+    "host": "MyCompany-db-server.MyCompany.com",
     "port": 5432,
-    "name": "kyky_ecommerce",
-    "username": "kyky_user",
-    "password": "${KYKY_DB_PASSWORD}",
+    "name": "MyCompany_ecommerce",
+    "username": "MyCompany_user",
+    "password": "${MyCompany_DB_PASSWORD}",
     "connectionPoolSize": 20,
-    "description": "הגדרות מסד נתונים של KYKY"
+    "description": "הגדרות מסד נתונים של MyCompany"
   },
   
   "api": {
-    "baseUrl": "https://api.kyky.com/ecommerce",
+    "baseUrl": "https://api.MyCompany.com/ecommerce",
     "version": "v1",
     "timeout": 30000,
     "rateLimiting": {
       "enabled": true,
       "maxRequestsPerMinute": 1000,
-      "description": "הגבלת קצב בקשות למערכת KYKY"
+      "description": "הגבלת קצב בקשות למערכת MyCompany"
     }
   },
   
@@ -30,38 +30,38 @@
     "productCatalog": {
       "enabled": true,
       "maxProductsPerCategory": 10000,
-      "description": "קטלוג מוצרים של KYKY"
+      "description": "קטלוג מוצרים של MyCompany"
     },
     "orderProcessing": {
       "enabled": true,
       "maxOrdersPerDay": 50000,
-      "description": "עיבוד הזמנות KYKY"
+      "description": "עיבוד הזמנות MyCompany"
     },
     "paymentGateway": {
       "enabled": true,
       "supportedCurrencies": ["USD", "EUR", "ILS"],
-      "description": "שער תשלומים של KYKY"
+      "description": "שער תשלומים של MyCompany"
     }
   },
   
   "logging": {
     "level": "INFO",
-    "outputPath": "/var/log/kyky-ecommerce/",
+    "outputPath": "/var/log/MyCompany-ecommerce/",
     "maxFileSize": "100MB",
-    "description": "הגדרות רישום אירועים של KYKY"
+    "description": "הגדרות רישום אירועים של MyCompany"
   },
   
   "security": {
-    "jwtSecret": "${KYKY_JWT_SECRET}",
+    "jwtSecret": "${MyCompany_JWT_SECRET}",
     "tokenExpirationMinutes": 60,
     "encryptionAlgorithm": "AES-256",
-    "description": "הגדרות אבטחה של מערכת KYKY"
+    "description": "הגדרות אבטחה של מערכת MyCompany"
   },
   
   "monitoring": {
-    "healthCheckEndpoint": "/health/kyky",
-    "metricsEndpoint": "/metrics/kyky",
+    "healthCheckEndpoint": "/health/MyCompany",
+    "metricsEndpoint": "/metrics/MyCompany",
     "alertingEnabled": true,
-    "description": "ניטור מערכת KYKY"
+    "description": "ניטור מערכת MyCompany"
   }
 }
