@@ -11,27 +11,27 @@ namespace ACME.Models
     {
         // Primary key for ACME database
         public int Id { get; set; }
-        
+
         /// <summary>
         /// User's full name in ACME format
         /// </summary>
         public string FullName { get; set; } = string.Empty;
-        
+
         // Email address (must be @acme.com domain)
         public string Email { get; set; } = string.Empty;
-        
+
         /*
          * Department within ACME Corporation
          * Possible values: IT, HR, Finance, Marketing
          * Used for ACME access control
          */
         public string Department { get; set; } = string.Empty;
-        
+
         /// <summary>
         /// Date when user joined ACME
         /// </summary>
         public DateTime JoinDate { get; set; }
-        
+
         // Internal ACME employee ID
         public string EmployeeId { get; set; } = string.Empty;
 

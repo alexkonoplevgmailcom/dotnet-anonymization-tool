@@ -16,7 +16,7 @@ namespace ACME.TestApplication
          * Contains company information: ACME Corp
          * Should be completely removed
          */
-        
+
         /// <summary>
         /// Main entry point for the ACME application
         /// </summary>
@@ -25,10 +25,10 @@ namespace ACME.TestApplication
         {
             // Initialize ACME services
             var service = new ACME.Services.DataService();
-            
+
             Console.WriteLine("Welcome to ACME Corporation!");
             Console.WriteLine($"Company: {GetCompanyName()}"); // ACME reference
-            
+
             /* Process user data
                - Validate ACME credentials
                - Load ACME configuration
@@ -55,7 +55,7 @@ namespace ACME.TestApplication
              * 2. ACME data validation  
              * 3. ACME business logic
              */
-            
+
             var config = LoadAcmeConfiguration(); // Company-specific config
             // Additional processing...
         }
