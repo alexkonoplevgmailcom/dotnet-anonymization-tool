@@ -1,0 +1,185 @@
+<!-- ACME Corporation XML Schema Definition -->
+<!-- Defines data structures for ACME customer management system -->
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://schemas.acme.com/customer"
+           xmlns:acme="http://schemas.acme.com/customer"
+           elementFormDefault="qualified">
+
+    <!-- Root element for ACME customer data -->
+    <xs:element name="AcmeCustomers" type="acme:AcmeCustomersType">
+        <xs:annotation>
+            <xs:documentation>
+                Root element containing all ACME customer records
+                Used throughout ACME systems for data exchange
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <!-- Complex type for ACME customers collection -->
+    <xs:complexType name="AcmeCustomersType">
+        <xs:annotation>
+            <xs:documentation>
+                Container for multiple ACME customer records
+                Includes metadata about ACME data export
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <!-- ACME metadata -->
+            <xs:element name="ExportInfo" type="acme:ExportInfoType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Metadata about ACME data export</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <!-- Individual ACME customers -->
+            <xs:element name="Customer" type="acme:CustomerType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Individual ACME customer record</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        
+        <!-- ACME export attributes -->
+        <xs:attribute name="version" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>ACME schema version</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="generatedBy" type="xs:string" default="ACME Customer Management System">
+            <xs:annotation>
+                <xs:documentation>System that generated this ACME data</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Export information for ACME systems -->
+    <xs:complexType name="ExportInfoType">
+        <xs:annotation>
+            <xs:documentation>
+                Contains metadata about ACME data export
+                Used for tracking and auditing ACME data transfers
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ExportDate" type="xs:dateTime">
+                <xs:annotation>
+                    <xs:documentation>When ACME data was exported</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ExportedBy" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>ACME user who performed export</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RecordCount" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Number of ACME customer records</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Individual ACME customer type -->
+    <xs:complexType name="CustomerType">
+        <xs:annotation>
+            <xs:documentation>
+                Defines structure for individual ACME customer
+                Contains all customer data used by ACME systems
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <!-- ACME customer identification -->
+            <xs:element name="CustomerId" type="acme:AcmeIdType">
+                <xs:annotation>
+                    <xs:documentation>Unique ACME customer identifier</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <!-- Customer personal information -->
+            <xs:element name="PersonalInfo" type="acme:PersonalInfoType">
+                <xs:annotation>
+                    <xs:documentation>Personal information for ACME customer</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            
+            <!-- ACME account information -->
+            <xs:element name="AccountInfo" type="acme:AccountInfoType">
+                <xs:annotation>
+                    <xs:documentation>ACME account details and status</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ACME ID type definition -->
+    <xs:simpleType name="AcmeIdType">
+        <xs:annotation>
+            <xs:documentation>
+                Standard ACME identifier format
+                Pattern: ACME_CUST_[0-9]{8}
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="ACME_CUST_[0-9]{8}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Personal information for ACME customers -->
+    <xs:complexType name="PersonalInfoType">
+        <xs:sequence>
+            <xs:element name="FirstName" type="xs:string" />
+            <xs:element name="LastName" type="xs:string" />
+            <xs:element name="Email" type="acme:AcmeEmailType" />
+            <xs:element name="Phone" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ACME email type with validation -->
+    <xs:simpleType name="AcmeEmailType">
+        <xs:annotation>
+            <xs:documentation>Email format accepted by ACME systems</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^@]+@[^@]+\.[^@]+" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ACME account information -->
+    <xs:complexType name="AccountInfoType">
+        <xs:sequence>
+            <xs:element name="AccountStatus" type="acme:AccountStatusType" />
+            <xs:element name="CreatedDate" type="xs:date" />
+            <xs:element name="LastLoginDate" type="xs:dateTime" minOccurs="0" />
+            <xs:element name="AcmeMembershipLevel" type="acme:MembershipLevelType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ACME account status enumeration -->
+    <xs:simpleType name="AccountStatusType">
+        <xs:annotation>
+            <xs:documentation>Possible account statuses in ACME system</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Active" />
+            <xs:enumeration value="Inactive" />
+            <xs:enumeration value="Suspended" />
+            <xs:enumeration value="Closed" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- ACME membership levels -->
+    <xs:simpleType name="MembershipLevelType">
+        <xs:annotation>
+            <xs:documentation>ACME customer membership tiers</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Bronze" />
+            <xs:enumeration value="Silver" />
+            <xs:enumeration value="Gold" />
+            <xs:enumeration value="Platinum" />
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,79 @@
+<!-- ACME Corporation Configuration File -->
+<!-- This file contains application settings for ACME systems -->
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <!-- Database connection settings for ACME -->
+    <connectionStrings>
+        <!-- Primary ACME database -->
+        <add name="AcmeDatabase" 
+             connectionString="Server=acme-sql-server;Database=ACME_Production;Integrated Security=true;" />
+        
+        <!-- ACME analytics database -->
+        <add name="AcmeAnalytics" 
+             connectionString="Server=acme-analytics;Database=ACME_Analytics;Integrated Security=true;" />
+    </connectionStrings>
+
+    <!-- Application settings specific to ACME -->
+    <appSettings>
+        <!-- Company information -->
+        <add key="CompanyName" value="ACME Corporation" />
+        <add key="CompanyCode" value="ACME" />
+        <add key="CompanyDomain" value="acme.com" />
+        
+        <!-- ACME API configuration -->
+        <add key="AcmeApiBaseUrl" value="https://api.acme.com/v1/" />
+        <add key="AcmeApiKey" value="${ACME_API_KEY}" />
+        
+        <!-- File paths for ACME system -->
+        <add key="AcmeDataPath" value="/var/acme/data/" />
+        <add key="AcmeLogPath" value="/var/log/acme/" />
+        <add key="AcmeBackupPath" value="/backup/acme/" />
+    </appSettings>
+
+    <!-- Logging configuration for ACME -->
+    <logging>
+        <!-- ACME application logs -->
+        <logger name="ACME.Application" 
+                level="Info" 
+                target="file" 
+                fileName="/var/log/acme/application.log" />
+        
+        <!-- ACME error logs -->
+        <logger name="ACME.Errors" 
+                level="Error" 
+                target="file" 
+                fileName="/var/log/acme/errors.log" />
+    </logging>
+
+    <!-- Security settings for ACME -->
+    <security>
+        <!-- Authentication providers for ACME -->
+        <authentication>
+            <provider name="AcmeActiveDirectory" 
+                     type="LDAP" 
+                     server="ldap://acme-dc.acme.local" 
+                     domain="ACME" />
+        </authentication>
+        
+        <!-- Authorization roles in ACME system -->
+        <authorization>
+            <role name="AcmeAdmin" description="ACME System Administrator" />
+            <role name="AcmeUser" description="ACME Standard User" />
+            <role name="AcmeGuest" description="ACME Guest Access" />
+        </authorization>
+    </security>
+
+    <!-- External services used by ACME -->
+    <externalServices>
+        <!-- ACME payment gateway -->
+        <service name="PaymentGateway" 
+                url="https://payments.acme.com/api" 
+                timeout="30000" />
+        
+        <!-- ACME notification service -->
+        <service name="NotificationService" 
+                url="https://notifications.acme.com/send" 
+                timeout="10000" />
+    </externalServices>
+</configuration>

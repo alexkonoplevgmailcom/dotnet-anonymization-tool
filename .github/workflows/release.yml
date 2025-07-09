@@ -1,0 +1,85 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+    
+    - name: Restore dependencies
+      run: dotnet restore src/Anonimization/Anonimization.csproj
+    
+    - name: Build Release
+      run: dotnet build src/Anonimization/Anonimization.csproj --configuration Release --no-restore
+    
+    - name: Publish Linux x64
+      run: dotnet publish src/Anonimization/Anonimization.csproj -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -o dist/linux-x64
+    
+    - name: Publish Windows x64
+      run: dotnet publish src/Anonimization/Anonimization.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o dist/win-x64
+    
+    - name: Publish macOS x64
+      run: dotnet publish src/Anonimization/Anonimization.csproj -c Release -r osx-x64 --self-contained true -p:PublishSingleFile=true -o dist/osx-x64
+    
+    - name: Publish macOS ARM64
+      run: dotnet publish src/Anonimization/Anonimization.csproj -c Release -r osx-arm64 --self-contained true -p:PublishSingleFile=true -o dist/osx-arm64
+    
+    - name: Create Archives
+      run: |
+        cd dist
+        tar -czf anonymization-tool-linux-x64.tar.gz -C linux-x64 .
+        zip -r anonymization-tool-windows-x64.zip win-x64/*
+        tar -czf anonymization-tool-macos-x64.tar.gz -C osx-x64 .
+        tar -czf anonymization-tool-macos-arm64.tar.gz -C osx-arm64 .
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dist/anonymization-tool-linux-x64.tar.gz
+          dist/anonymization-tool-windows-x64.zip
+          dist/anonymization-tool-macos-x64.tar.gz
+          dist/anonymization-tool-macos-arm64.tar.gz
+        body: |
+          ## 🛡️ Anonymization Tool Release
+          
+          ### Features
+          - Remove comments from C#, Java, XML, SQL, XSD, JSON, HTML files
+          - Replace company names with "MyCompany"
+          - Automatic backup creation
+          - Interactive menu system
+          - Validation reports with HTML output
+          - Cross-platform support
+          
+          ### Downloads
+          - **Linux x64**: `anonymization-tool-linux-x64.tar.gz`
+          - **Windows x64**: `anonymization-tool-windows-x64.zip`
+          - **macOS Intel**: `anonymization-tool-macos-x64.tar.gz`
+          - **macOS Apple Silicon**: `anonymization-tool-macos-arm64.tar.gz`
+          
+          ### Usage
+          ```bash
+          # Extract and run
+          ./Anonimization
+          
+          # Command line usage
+          ./Anonimization /path/to/project
+          ./Anonimization /path/to/project "CompanyName"
+          ```
+          
+          See [README.md](README.md) for full documentation.
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
