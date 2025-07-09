@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    KYKY E-commerce Platform Maven Configuration
+    הגדרות Maven לפלטפורמת המסחר האלקטרוני של KYKY
+    
+    This POM file contains all dependencies and build configuration for KYKY e-commerce system
+    קובץ POM זה מכיל את כל התלויות והגדרות הבנייה למערכת המסחר האלקטרוני של KYKY
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.MyCompany</groupId>
-    <artifactId>MyCompany-ecommerce-platform</artifactId>
+    
+    <!-- פרטי פרויקט KYKY - KYKY project details -->
+    <groupId>com.kyky</groupId>
+    <artifactId>kyky-ecommerce-platform</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>MyCompany E-commerce Platform</name>
-    <description>Advanced e-commerce platform developed by MyCompany Corporation - פלטפורמת מסחר אלקטרוני מתקדמת של תאגיד MyCompany</description>
-    <url>https://ecommerce.MyCompany.com</url>
+    
+    <!-- מידע על פרויקט KYKY - KYKY project information -->
+    <name>KYKY E-commerce Platform</name>
+    <description>Advanced e-commerce platform developed by KYKY Corporation - פלטפורמת מסחר אלקטרוני מתקדמת של תאגיד KYKY</description>
+    <url>https://ecommerce.kyky.com</url>
     <inceptionYear>2024</inceptionYear>
+    
+    <!-- פרטי ארגון KYKY - KYKY organization details -->
     <organization>
-        <name>MyCompany Corporation</name>
-        <url>https://www.MyCompany.com</url>
+        <name>KYKY Corporation</name>
+        <url>https://www.kyky.com</url>
     </organization>
+    
+    <!-- רישיונות פרויקט KYKY - KYKY project licenses -->
     <licenses>
         <license>
-            <name>MyCompany Proprietary License</name>
-            <url>https://www.MyCompany.com/license</url>
+            <name>KYKY Proprietary License</name>
+            <url>https://www.kyky.com/license</url>
             <distribution>repo</distribution>
-            <comments>רישיון קנייני של חברת MyCompany</comments>
+            <comments>רישיון קנייני של חברת KYKY</comments>
         </license>
     </licenses>
+    
+    <!-- מפתחי KYKY - KYKY developers -->
     <developers>
         <developer>
-            <id>MyCompany-dev-team</id>
-            <name>MyCompany Development Team</name>
-            <email>dev@MyCompany.com</email>
-            <organization>MyCompany Corporation</organization>
-            <organizationUrl>https://www.MyCompany.com</organizationUrl>
+            <id>kyky-dev-team</id>
+            <name>KYKY Development Team</name>
+            <email>dev@kyky.com</email>
+            <organization>KYKY Corporation</organization>
+            <organizationUrl>https://www.kyky.com</organizationUrl>
             <roles>
                 <role>architect</role>
                 <role>developer</role>
@@ -37,17 +55,24 @@
             <timezone>Asia/Jerusalem</timezone>
         </developer>
     </developers>
+    
+    <!--
+        מאגר קוד מקור של KYKY
+        KYKY source code repository
+    -->
     <scm>
-        <connection>scm:git:https://github.com/MyCompany-corp/ecommerce-platform.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:MyCompany-corp/ecommerce-platform.git</developerConnection>
-        <url>https://github.com/MyCompany-corp/ecommerce-platform</url>
+        <connection>scm:git:https://github.com/kyky-corp/ecommerce-platform.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:kyky-corp/ecommerce-platform.git</developerConnection>
+        <url>https://github.com/kyky-corp/ecommerce-platform</url>
         <tag>HEAD</tag>
     </scm>
+    
+    <!-- מאגרי Maven של KYKY - KYKY Maven repositories -->
     <repositories>
         <repository>
-            <id>MyCompany-internal-repo</id>
-            <name>MyCompany Internal Repository</name>
-            <url>https://nexus.MyCompany.com/repository/maven-public/</url>
+            <id>kyky-internal-repo</id>
+            <name>KYKY Internal Repository</name>
+            <url>https://nexus.kyky.com/repository/maven-public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -55,6 +80,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        
         <repository>
             <id>central</id>
             <name>Maven Central Repository</name>
@@ -67,11 +93,16 @@
             </snapshots>
         </repository>
     </repositories>
+    
+    <!-- הגדרות פרויקט KYKY - KYKY project properties -->
     <properties>
+        <!-- גרסת Java למערכת KYKY - Java version for KYKY system -->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        
+        <!-- גרסאות תלויות של KYKY - KYKY dependency versions -->
         <spring.boot.version>3.2.0</spring.boot.version>
         <spring.version>6.1.0</spring.version>
         <junit.version>5.10.0</junit.version>
@@ -81,104 +112,143 @@
         <jackson.version>2.16.0</jackson.version>
         <hibernate.version>6.4.0.Final</hibernate.version>
         <postgresql.version>42.7.1</postgresql.version>
+        
+        <!-- הגדרות בנייה של KYKY - KYKY build settings -->
         <maven.surefire.version>3.2.2</maven.surefire.version>
         <maven.failsafe.version>3.2.2</maven.failsafe.version>
         <jacoco.version>0.8.11</jacoco.version>
         <sonar.version>3.10.0.2594</sonar.version>
-        <MyCompany.environment>development</MyCompany.environment>
-        <MyCompany.profile.active>dev</MyCompany.profile.active>
-        <MyCompany.logging.level>INFO</MyCompany.logging.level>
+        
+        <!-- הגדרות KYKY ספציפיות - KYKY specific settings -->
+        <kyky.environment>development</kyky.environment>
+        <kyky.profile.active>dev</kyky.profile.active>
+        <kyky.logging.level>INFO</kyky.logging.level>
     </properties>
+    
+    <!-- תלויות פרויקט KYKY - KYKY project dependencies -->
     <dependencies>
+        <!-- Spring Boot למערכת KYKY - Spring Boot for KYKY system -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+        
+        <!--
+            תלויות מסד נתונים לחברת KYKY
+            Database dependencies for KYKY
+        -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+        
+        <!-- Jackson לעיבוד JSON במערכת KYKY - Jackson for JSON processing in KYKY system -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        
+        <!-- רישום אירועים למערכת KYKY - Logging for KYKY system -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
+        
+        <!--
+            כלי עזר נוספים לפרויקט KYKY
+            Additional utilities for KYKY project
+        -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.14.0</version>
         </dependency>
+        
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.15.1</version>
         </dependency>
+        
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>4.4</version>
         </dependency>
+        
+        <!-- תלויות בדיקות לפרויקט KYKY - Test dependencies for KYKY project -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring.boot.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        <!--
+            תלויות פיתוח למערכת KYKY
+            Development dependencies for KYKY system
+        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -187,8 +257,13 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+    
+    <!-- הגדרות בנייה של פרויקט KYKY - KYKY project build configuration -->
     <build>
-        <finalName>MyCompany-ecommerce-platform-${project.version}</finalName>
+        <!-- שם הקובץ הסופי - Final artifact name -->
+        <finalName>kyky-ecommerce-platform-${project.version}</finalName>
+        
+        <!-- תיקיות מקור של KYKY - KYKY source directories -->
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <resources>
@@ -197,7 +272,10 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        
+        <!-- תוספים של Maven לפרויקט KYKY - Maven plugins for KYKY project -->
         <plugins>
+            <!-- קומפיילר Java לחברת KYKY - Java compiler for KYKY -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -211,6 +289,10 @@
                         <arg>-Xlint:unchecked</arg>
                         <arg>-Xlint:deprecation</arg>
                     </compilerArgs>
+                    <!--
+                        הגדרות קומפילציה למערכת KYKY
+                        Compilation settings for KYKY system
+                    -->
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.springframework.boot</groupId>
@@ -220,12 +302,14 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            
+            <!-- Spring Boot plugin למערכת KYKY - Spring Boot plugin for KYKY system -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
                 <configuration>
-                    <mainClass>com.MyCompany.ecommerce.KYKYEcommerceApplication</mainClass>
+                    <mainClass>com.kyky.ecommerce.KYKYEcommerceApplication</mainClass>
                     <addResources>true</addResources>
                     <excludes>
                         <exclude>
@@ -242,6 +326,11 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <!--
+                הרצת בדיקות יחידה למערכת KYKY
+                Unit test execution for KYKY system
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -255,11 +344,13 @@
                         <exclude>**/*IntegrationTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
-                        <MyCompany.test.environment>unit</MyCompany.test.environment>
+                        <kyky.test.environment>unit</kyky.test.environment>
                         <spring.profiles.active>test</spring.profiles.active>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
+            
+            <!-- בדיקות אינטגרציה למערכת KYKY - Integration tests for KYKY system -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -270,7 +361,7 @@
                         <include>**/*IT.java</include>
                     </includes>
                     <systemPropertyVariables>
-                        <MyCompany.test.environment>integration</MyCompany.test.environment>
+                        <kyky.test.environment>integration</kyky.test.environment>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>
@@ -282,26 +373,31 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <!--
+                כיסוי קוד באמצעות JaCoCo למערכת KYKY
+                Code coverage using JaCoCo for KYKY system
+            -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco.version}</version>
                 <executions>
                     <execution>
-                        <id>MyCompany-prepare-agent</id>
+                        <id>kyky-prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>MyCompany-report</id>
+                        <id>kyky-report</id>
                         <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>MyCompany-check</id>
+                        <id>kyky-check</id>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -322,6 +418,8 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <!-- יצירת תיעוד JavaDoc למערכת KYKY - JavaDoc generation for KYKY system -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -332,9 +430,9 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <docencoding>${project.build.sourceEncoding}</docencoding>
                     <charset>${project.build.sourceEncoding}</charset>
-                    <windowTitle>MyCompany E-commerce Platform API Documentation</windowTitle>
-                    <doctitle>MyCompany E-commerce Platform API - תיעוד API של פלטפורמת המסחר האלקטרוני של MyCompany</doctitle>
-                    <bottom>Copyright © {currentYear} MyCompany Corporation. All rights reserved.</bottom>
+                    <windowTitle>KYKY E-commerce Platform API Documentation</windowTitle>
+                    <doctitle>KYKY E-commerce Platform API - תיעוד API של פלטפורמת המסחר האלקטרוני של KYKY</doctitle>
+                    <bottom>Copyright © {currentYear} KYKY Corporation. All rights reserved.</bottom>
                 </configuration>
                 <executions>
                     <execution>
@@ -347,33 +445,46 @@
             </plugin>
         </plugins>
     </build>
+    
+    <!--
+        פרופילי בנייה למערכת KYKY
+        Build profiles for KYKY system
+    -->
     <profiles>
+        <!-- פרופיל פיתוח של KYKY - KYKY development profile -->
         <profile>
-            <id>MyCompany-dev</id>
+            <id>kyky-dev</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
                 <property>
-                    <name>MyCompany.environment</name>
+                    <name>kyky.environment</name>
                     <value>development</value>
                 </property>
             </activation>
             <properties>
-                <MyCompany.logging.level>DEBUG</MyCompany.logging.level>
-                <MyCompany.database.url>jdbc:postgresql://localhost:5432/MyCompany_ecommerce_dev</MyCompany.database.url>
+                <kyky.logging.level>DEBUG</kyky.logging.level>
+                <kyky.database.url>jdbc:postgresql://localhost:5432/kyky_ecommerce_dev</kyky.database.url>
             </properties>
         </profile>
+        
+        <!-- פרופיל ייצור של KYKY - KYKY production profile -->
         <profile>
-            <id>MyCompany-prod</id>
+            <id>kyky-prod</id>
             <properties>
-                <MyCompany.logging.level>WARN</MyCompany.logging.level>
-                <MyCompany.database.url>jdbc:postgresql://MyCompany-prod-db.MyCompany.com:5432/MyCompany_ecommerce</MyCompany.database.url>
+                <kyky.logging.level>WARN</kyky.logging.level>
+                <kyky.database.url>jdbc:postgresql://kyky-prod-db.kyky.com:5432/kyky_ecommerce</kyky.database.url>
             </properties>
         </profile>
+        
+        <!--
+            פרופיל בדיקות למערכת KYKY
+            Testing profile for KYKY system
+        -->
         <profile>
-            <id>MyCompany-test</id>
+            <id>kyky-test</id>
             <properties>
-                <MyCompany.logging.level>INFO</MyCompany.logging.level>
-                <MyCompany.database.url>jdbc:h2:mem:MyCompany_test_db</MyCompany.database.url>
+                <kyky.logging.level>INFO</kyky.logging.level>
+                <kyky.database.url>jdbc:h2:mem:kyky_test_db</kyky.database.url>
             </properties>
             <dependencies>
                 <dependency>
@@ -385,6 +496,8 @@
             </dependencies>
         </profile>
     </profiles>
+    
+    <!-- דיווח פרויקט KYKY - KYKY project reporting -->
     <reporting>
         <plugins>
             <plugin>

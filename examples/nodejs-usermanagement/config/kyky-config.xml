@@ -1,124 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    KYKY User Management System Configuration
+    הגדרות מערכת ניהול המשתמשים של KYKY
+    
+    This XML file contains configuration settings for KYKY user management
+    קובץ XML זה מכיל הגדרות תצורה לניהול משתמשי KYKY
+-->
 <kykyUserManagement>
+    <!-- הגדרות כלליות של מערכת KYKY - General KYKY system settings -->
     <general>
         <application>
-            <name>MyCompany User Management System</name>
-            <nameHebrew>מערכת ניהול המשתמשים של MyCompany</nameHebrew>
+            <!-- שם המערכת - System name -->
+            <name>KYKY User Management System</name>
+            <nameHebrew>מערכת ניהול המשתמשים של KYKY</nameHebrew>
             <version>1.0.0</version>
-            <company>MyCompany Corporation</company>
-            <companyHebrew>תאגיד MyCompany</companyHebrew>
-            <description>Advanced user management platform for MyCompany</description>
-            <descriptionHebrew>פלטפורמה מתקדמת לניהול משתמשים של MyCompany</descriptionHebrew>
+            <company>KYKY Corporation</company>
+            <companyHebrew>תאגיד KYKY</companyHebrew>
+            <description>Advanced user management platform for KYKY</description>
+            <descriptionHebrew>פלטפורמה מתקדמת לניהול משתמשים של KYKY</descriptionHebrew>
         </application>
+        
+        <!-- הגדרות לוקליזציה - Localization settings -->
         <localization>
             <defaultLanguage>en</defaultLanguage>
             <supportedLanguages>
                 <language code="en">English</language>
                 <language code="he">עברית</language>
             </supportedLanguages>
+            <!-- 
+                הגדרות תרגום למערכת KYKY
+                Translation settings for KYKY system
+            -->
             <timezone>Asia/Jerusalem</timezone>
             <dateFormat>dd/MM/yyyy</dateFormat>
         </localization>
     </general>
+    
+    <!-- הגדרות שרת וחיבורים - Server and connections settings -->
     <server>
-        <host>MyCompany-user-mgmt.MyCompany.com</host>
+        <host>kyky-user-mgmt.kyky.com</host>
         <port>3000</port>
         <environment>development</environment>
+        
+        <!-- הגדרות אבטחה של שרת KYKY - KYKY server security settings -->
         <security>
             <cors>
+                <!-- הגדרות CORS למערכת KYKY - CORS settings for KYKY system -->
                 <enabled>true</enabled>
                 <allowedOrigins>
-                    <origin>https://MyCompany.com</origin>
-                    <origin>https://admin.MyCompany.com</origin>
-                    <origin>https://portal.MyCompany.com</origin>
+                    <origin>https://kyky.com</origin>
+                    <origin>https://admin.kyky.com</origin>
+                    <origin>https://portal.kyky.com</origin>
                 </allowedOrigins>
             </cors>
+            
             <rateLimit>
+                <!-- הגבלת קצב בקשות במערכת KYKY - Rate limiting in KYKY system -->
                 <enabled>true</enabled>
                 <maxRequests>100</maxRequests>
                 <windowMinutes>15</windowMinutes>
-                <description>הגבלת קצב למערכת MyCompany</description>
+                <description>הגבלת קצב למערכת KYKY</description>
             </rateLimit>
         </security>
     </server>
+    
+    <!--
+        הגדרות מסד נתונים של KYKY
+        KYKY database configuration
+    -->
     <database>
         <connection>
             <type>MongoDB</type>
-            <host>MyCompany-db-cluster.MyCompany.com</host>
+            <host>kyky-db-cluster.kyky.com</host>
             <port>27017</port>
-            <database>MyCompany_user_management</database>
-            <username>MyCompany_db_user</username>
-            <password>${MyCompany_DB_PASSWORD}</password>
-            <connectionString>mongodb://MyCompany_db_user:${MyCompany_DB_PASSWORD}@MyCompany-db-cluster.MyCompany.com:27017/MyCompany_user_management</connectionString>
+            <database>kyky_user_management</database>
+            <username>kyky_db_user</username>
+            <password>${KYKY_DB_PASSWORD}</password>
+            <!-- 
+                מחרוזת חיבור למסד נתונים של KYKY
+                KYKY database connection string
+            -->
+            <connectionString>mongodb://kyky_db_user:${KYKY_DB_PASSWORD}@kyky-db-cluster.kyky.com:27017/kyky_user_management</connectionString>
         </connection>
+        
         <collections>
-            <collection name="MyCompany_users">
-                <description>אוסף משתמשי MyCompany</description>
+            <!-- קולקציות מסד נתונים של KYKY - KYKY database collections -->
+            <collection name="kyky_users">
+                <description>אוסף משתמשי KYKY</description>
                 <indexes>
                     <index field="email" unique="true"/>
                     <index field="department"/>
                     <index field="isActive"/>
                 </indexes>
             </collection>
-            <collection name="MyCompany_sessions">
-                <description>אוסף הפעלות משתמשי MyCompany</description>
-                <ttl>86400</ttl> 
+            
+            <collection name="kyky_sessions">
+                <description>אוסף הפעלות משתמשי KYKY</description>
+                <ttl>86400</ttl> <!-- 24 hours -->
             </collection>
         </collections>
     </database>
+    
+    <!-- הגדרות אימות ואבטחה - Authentication and security settings -->
     <authentication>
         <jwt>
-            <secret>${MyCompany_JWT_SECRET}</secret>
+            <!-- הגדרות JWT למערכת KYKY - JWT settings for KYKY system -->
+            <secret>${KYKY_JWT_SECRET}</secret>
             <expirationHours>24</expirationHours>
-            <issuer>MyCompany-User-Management</issuer>
+            <issuer>KYKY-User-Management</issuer>
             <algorithm>HS256</algorithm>
         </jwt>
+        
         <password>
+            <!--
+                הגדרות סיסמאות למשתמשי KYKY
+                Password settings for KYKY users
+            -->
             <minLength>8</minLength>
             <requireUppercase>true</requireUppercase>
             <requireNumbers>true</requireNumbers>
             <requireSpecialChars>true</requireSpecialChars>
             <saltRounds>12</saltRounds>
-            <description>מדיניות סיסמאות למערכת MyCompany</description>
+            <description>מדיניות סיסמאות למערכת KYKY</description>
         </password>
     </authentication>
+    
+    <!-- 
+        הגדרות תכונות המערכת
+        System features configuration
+    -->
     <features>
         <userProfile>
             <enabled>true</enabled>
             <maxAvatarSize>5MB</maxAvatarSize>
             <allowedAvatarFormats>jpg,png,gif</allowedAvatarFormats>
-            <description>פרופיל משתמש במערכת MyCompany</description>
+            <description>פרופיל משתמש במערכת KYKY</description>
         </userProfile>
+        
         <permissions>
+            <!-- הגדרות הרשאות במערכת KYKY - Permissions settings in KYKY system -->
             <enabled>true</enabled>
             <defaultPermissions>
                 <permission>read</permission>
                 <permission>profile.update</permission>
             </defaultPermissions>
             <availablePermissions>
-                <permission name="admin" description="הרשאות מנהל מערכת MyCompany"/>
+                <permission name="admin" description="הרשאות מנהל מערכת KYKY"/>
                 <permission name="user.create" description="יצירת משתמשים חדשים"/>
                 <permission name="user.delete" description="מחיקת משתמשים"/>
-                <permission name="reports.view" description="צפייה בדוחות MyCompany"/>
+                <permission name="reports.view" description="צפייה בדוחות KYKY"/>
             </availablePermissions>
         </permissions>
+        
         <audit>
+            <!--
+                מערכת ביקורת למערכת KYKY
+                Audit system for KYKY
+            -->
             <enabled>true</enabled>
             <logLevel>INFO</logLevel>
             <retentionDays>365</retentionDays>
-            <logFile>/var/log/MyCompany/user-management-audit.log</logFile>
-            <description>מערכת ביקורת פעילות משתמשי MyCompany</description>
+            <logFile>/var/log/kyky/user-management-audit.log</logFile>
+            <description>מערכת ביקורת פעילות משתמשי KYKY</description>
         </audit>
     </features>
+    
+    <!--
+        הגדרות ניטור ובריאות המערכת
+        Monitoring and system health settings
+    -->
     <monitoring>
         <healthCheck>
-            <endpoint>/health/MyCompany</endpoint>
+            <endpoint>/health/kyky</endpoint>
             <intervalSeconds>30</intervalSeconds>
             <enabled>true</enabled>
         </healthCheck>
+        
         <metrics>
+            <!-- מדדי ביצועים למערכת KYKY - Performance metrics for KYKY system -->
             <enabled>true</enabled>
-            <endpoint>/metrics/MyCompany</endpoint>
+            <endpoint>/metrics/kyky</endpoint>
             <collectUserStats>true</collectUserStats>
             <collectSystemStats>true</collectSystemStats>
         </metrics>
