@@ -36,17 +36,18 @@ class Program
         }
 
         while (true)
-        {
-            Console.Clear();
-            Console.WriteLine("╔══════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║              ANONYMIZATION TOOL - MAIN MENU             ║");
-            Console.WriteLine("╠══════════════════════════════════════════════════════════╣");
-            Console.WriteLine("║  1. Anonymize files (remove comments & replace company) ║");
-            Console.WriteLine("║  2. Restore files from backup                           ║");
-            Console.WriteLine("║  3. Show command line usage                             ║");
-            Console.WriteLine("║  4. Exit                                                ║");
-            Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
-            Console.WriteLine();
+        {        Console.Clear();
+        Console.WriteLine("╔══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              ANONYMIZATION TOOL - MAIN MENU             ║");
+        Console.WriteLine("╠══════════════════════════════════════════════════════════╣");
+        Console.WriteLine("║  1. Anonymize files (remove comments & replace company) ║");
+        Console.WriteLine("║  2. Restore files from backup                           ║");
+        Console.WriteLine("║  3. Show command line usage                             ║");
+        Console.WriteLine("║  4. Exit                                                ║");
+        Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
+        Console.WriteLine();
+        Console.WriteLine("📁 Supported file extensions: .cs, .java, .xml, .sql, .xsd, .json, .htm, .html");
+        Console.WriteLine();
             Console.Write("Please select an option (1-4): ");
 
             string? input = Console.ReadLine();
@@ -381,7 +382,9 @@ public class FileAnonymizer
             { ".xml", ProcessXmlFile },
             { ".sql", ProcessSqlFile },
             { ".xsd", ProcessXsdFile },
-            { ".json", ProcessJsonFile }
+            { ".json", ProcessJsonFile },
+            { ".htm", ProcessHtmlFile },
+            { ".html", ProcessHtmlFile }
         };
     }
 
@@ -537,6 +540,14 @@ public class FileAnonymizer
         // JSON files don't typically have comments to remove in standard JSON
         // but we may want to format it nicely after company name replacement
         return content;
+    }
+
+    private string ProcessHtmlFile(string content)
+    {
+        // Remove HTML comments (<!-- ... -->)
+        content = Regex.Replace(content, @"<!--.*?-->", "", RegexOptions.Singleline);
+        
+        return CleanupWhitespace(content);
     }
 
     private string CleanupWhitespace(string content)
@@ -837,7 +848,7 @@ public class AnonymizationValidator
 
     private bool IsProcessableFile(string filePath)
     {
-        var supportedExtensions = new[] { ".cs", ".java", ".xml", ".sql", ".xsd", ".json" };
+        var supportedExtensions = new[] { ".cs", ".java", ".xml", ".sql", ".xsd", ".json", ".htm", ".html" };
         return supportedExtensions.Contains(Path.GetExtension(filePath), StringComparer.OrdinalIgnoreCase);
     }
 
