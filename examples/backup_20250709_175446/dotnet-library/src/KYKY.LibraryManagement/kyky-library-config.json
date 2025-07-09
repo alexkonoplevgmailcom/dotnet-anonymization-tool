@@ -1,0 +1,216 @@
+{
+  "applicationName": "KYKY Library Management System",
+  "applicationDescription": "מערכת ניהול ספרייה מתקדמת של חברת KYKY",
+  "version": "1.0.0",
+  "company": "KYKY Corporation",
+  "companyDescription": "תאגיד KYKY לפתרונות ניהול ספרייה",
+  
+  "database": {
+    "connectionString": "Server=kyky-library-db.kyky.com;Database=KYKY_Library;User Id=kyky_library_user;Password=${KYKY_DB_PASSWORD};",
+    "provider": "SqlServer",
+    "timeout": 30,
+    "maxPoolSize": 100,
+    "description": "הגדרות מסד נתונים למערכת ספרייה KYKY"
+  },
+  
+  "library": {
+    "name": "KYKY Central Library",
+    "nameHebrew": "הספרייה המרכזית של KYKY",
+    "address": "KYKY Technology Campus, Tel Aviv",
+    "addressHebrew": "קמפוס הטכנולוגיה של KYKY, תל אביב",
+    "phone": "+972-3-1234567",
+    "email": "library@kyky.com",
+    "website": "https://library.kyky.com",
+    "operatingHours": {
+      "sunday": "08:00-20:00",
+      "monday": "08:00-20:00",
+      "tuesday": "08:00-20:00",
+      "wednesday": "08:00-20:00",
+      "thursday": "08:00-20:00",
+      "friday": "08:00-14:00",
+      "saturday": "Closed",
+      "description": "שעות פעילות ספרייה KYKY"
+    }
+  },
+  
+  "services": {
+    "bookService": {
+      "enabled": true,
+      "maxBooksPerMember": 10,
+      "defaultLoanPeriodDays": 14,
+      "maxRenewalTimes": 3,
+      "description": "שירות ניהול ספרים של KYKY"
+    },
+    "memberService": {
+      "enabled": true,
+      "membershipTypes": [
+        {
+          "type": "KYKY Employee",
+          "maxBooks": 15,
+          "loanPeriodDays": 21,
+          "description": "עובדי KYKY"
+        },
+        {
+          "type": "KYKY Student",
+          "maxBooks": 8,
+          "loanPeriodDays": 14,
+          "description": "סטודנטים של KYKY"
+        },
+        {
+          "type": "KYKY Guest",
+          "maxBooks": 3,
+          "loanPeriodDays": 7,
+          "description": "אורחי KYKY"
+        }
+      ]
+    },
+    "loanService": {
+      "enabled": true,
+      "autoRenewalEnabled": true,
+      "overdueNotificationDays": [3, 7, 14],
+      "finePerDay": 2.0,
+      "currency": "ILS",
+      "description": "שירות השאלות של ספרייה KYKY"
+    }
+  },
+  
+  "notifications": {
+    "email": {
+      "enabled": true,
+      "smtpServer": "smtp.kyky.com",
+      "smtpPort": 587,
+      "fromAddress": "library-notifications@kyky.com",
+      "fromName": "KYKY Library System",
+      "templates": {
+        "loanConfirmation": "loan-confirmation-template.html",
+        "overdueNotice": "overdue-notice-template.html",
+        "returnReminder": "return-reminder-template.html"
+      },
+      "description": "הגדרות התראות דוא״ל של KYKY"
+    },
+    "sms": {
+      "enabled": false,
+      "provider": "KYKY SMS Gateway",
+      "apiKey": "${KYKY_SMS_API_KEY}",
+      "description": "הגדרות התראות SMS של KYKY"
+    }
+  },
+  
+  "security": {
+    "authentication": {
+      "method": "JWT",
+      "jwtSecret": "${KYKY_JWT_SECRET}",
+      "tokenExpirationHours": 8,
+      "refreshTokenExpirationDays": 30,
+      "issuer": "KYKY-Library-System",
+      "audience": "KYKY-Library-Users"
+    },
+    "authorization": {
+      "roles": [
+        {
+          "name": "KYKYLibrarian",
+          "permissions": ["read", "write", "delete", "manage"],
+          "description": "ספרן KYKY"
+        },
+        {
+          "name": "KYKYMember",
+          "permissions": ["read", "borrow", "profile"],
+          "description": "חבר ספרייה KYKY"
+        },
+        {
+          "name": "KYKYAdmin",
+          "permissions": ["all"],
+          "description": "מנהל מערכת KYKY"
+        }
+      ]
+    },
+    "encryption": {
+      "algorithm": "AES-256-GCM",
+      "keyRotationDays": 90,
+      "description": "הגדרות הצפנה למערכת KYKY"
+    }
+  },
+  
+  "logging": {
+    "level": "Information",
+    "file": {
+      "enabled": true,
+      "path": "/var/log/kyky-library/",
+      "fileName": "kyky-library-{Date}.log",
+      "maxFileSizeMB": 50,
+      "retentionDays": 30
+    },
+    "console": {
+      "enabled": true,
+      "includeTimestamp": true,
+      "includeLogLevel": true
+    },
+    "database": {
+      "enabled": true,
+      "tableName": "KYKY_SystemLogs",
+      "description": "רישום אירועים במסד נתונים KYKY"
+    }
+  },
+  
+  "cache": {
+    "type": "Memory",
+    "defaultExpirationMinutes": 30,
+    "maxSizeEntries": 10000,
+    "policies": {
+      "books": {
+        "expirationMinutes": 60,
+        "priority": "High",
+        "description": "מטמון ספרי KYKY"
+      },
+      "members": {
+        "expirationMinutes": 45,
+        "priority": "Medium",
+        "description": "מטמון חברי KYKY"
+      }
+    }
+  },
+  
+  "monitoring": {
+    "healthCheck": {
+      "enabled": true,
+      "endpoint": "/health/kyky-library",
+      "intervalSeconds": 30
+    },
+    "metrics": {
+      "enabled": true,
+      "endpoint": "/metrics/kyky-library",
+      "includeSystemMetrics": true,
+      "includeApplicationMetrics": true
+    },
+    "alerts": {
+      "enabled": true,
+      "webhook": "https://alerts.kyky.com/library",
+      "thresholds": {
+        "cpuUsagePercent": 80,
+        "memoryUsagePercent": 85,
+        "errorRatePercent": 5
+      }
+    }
+  },
+  
+  "features": {
+    "digitalLibrary": {
+      "enabled": true,
+      "maxDigitalLoans": 5,
+      "digitalLoanPeriodDays": 7,
+      "description": "ספרייה דיגיטלית של KYKY"
+    },
+    "reservations": {
+      "enabled": true,
+      "maxReservationsPerMember": 3,
+      "reservationHoldDays": 7,
+      "description": "מערכת הזמנות KYKY"
+    },
+    "recommendations": {
+      "enabled": true,
+      "algorithm": "collaborative-filtering",
+      "maxRecommendations": 10,
+      "description": "מערכת המלצות ספרים KYKY"
+    }
+  }
+}

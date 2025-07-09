@@ -1,0 +1,112 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- 
+    KYKY Library Management System Project File
+    קובץ פרויקט למערכת ניהול הספרייה של KYKY
+  -->
+
+  <PropertyGroup>
+    <!-- הגדרות בסיסיות של פרויקט KYKY - Basic KYKY project settings -->
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    
+    <!-- מידע על חברת KYKY - KYKY company information -->
+    <AssemblyTitle>KYKY Library Management System</AssemblyTitle>
+    <AssemblyDescription>מערכת ניהול ספרייה מתקדמת של חברת KYKY</AssemblyDescription>
+    <AssemblyCompany>KYKY Corporation</AssemblyCompany>
+    <AssemblyProduct>KYKY Library Management Platform</AssemblyProduct>
+    <AssemblyCopyright>Copyright © KYKY Corporation 2024</AssemblyCopyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+    
+    <!-- הגדרות נוספות למערכת KYKY - Additional KYKY system settings -->
+    <RootNamespace>KYKY.LibraryManagement</RootNamespace>
+    <StartupObject>KYKY.LibraryManagement.Program</StartupObject>
+    
+    <!--
+      הגדרות בנייה לפרויקט KYKY
+      Build settings for KYKY project
+    -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\KYKY.LibraryManagement.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <!-- 
+    חבילות NuGet למערכת KYKY
+    NuGet packages for KYKY system
+  -->
+  <ItemGroup>
+    <!-- Microsoft Extensions למערכת KYKY - Microsoft Extensions for KYKY system -->
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+    
+    <!--
+      חבילות נוספות לפונקציונליות KYKY
+      Additional packages for KYKY functionality
+    -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Text.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- קבצי תצורה למערכת KYKY - Configuration files for KYKY system -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="kyky-library-config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="kyky-library-settings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!--
+    הגדרות קומפילציה למערכת KYKY
+    Compilation settings for KYKY system
+  -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <!-- הגדרות Debug לפיתוח KYKY - Debug settings for KYKY development -->
+    <DefineConstants>DEBUG;TRACE;KYKY_DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <!--
+      הגדרות Release לייצור KYKY
+      Release settings for KYKY production
+    -->
+    <DefineConstants>TRACE;KYKY_RELEASE</DefineConstants>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+
+  <!-- יעדי בנייה מותאמים לחברת KYKY - Custom build targets for KYKY -->
+  <Target Name="KYKYPreBuild" BeforeTargets="PreBuildEvent">
+    <Message Text="Starting KYKY Library Management System build..." Importance="high" />
+    <Message Text="מתחיל בניית מערכת ניהול הספרייה של KYKY..." Importance="high" />
+  </Target>
+
+  <Target Name="KYKYPostBuild" AfterTargets="PostBuildEvent">
+    <!--
+      פעולות לאחר בנייה של מערכת KYKY
+      Post-build actions for KYKY system
+    -->
+    <Message Text="KYKY Library Management System build completed successfully!" Importance="high" />
+    <Message Text="בניית מערכת ניהול הספרייה של KYKY הושלמה בהצלחה!" Importance="high" />
+  </Target>
+
+</Project>

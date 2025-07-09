@@ -1,0 +1,216 @@
+{
+  "applicationName": "MyCompany Library Management System",
+  "applicationDescription": "מערכת ניהול ספרייה מתקדמת של חברת MyCompany",
+  "version": "1.0.0",
+  "company": "MyCompany Corporation",
+  "companyDescription": "תאגיד MyCompany לפתרונות ניהול ספרייה",
+  
+  "database": {
+    "connectionString": "Server=MyCompany-library-db.MyCompany.com;Database=MyCompany_Library;User Id=MyCompany_library_user;Password=${MyCompany_DB_PASSWORD};",
+    "provider": "SqlServer",
+    "timeout": 30,
+    "maxPoolSize": 100,
+    "description": "הגדרות מסד נתונים למערכת ספרייה MyCompany"
+  },
+  
+  "library": {
+    "name": "MyCompany Central Library",
+    "nameHebrew": "הספרייה המרכזית של MyCompany",
+    "address": "MyCompany Technology Campus, Tel Aviv",
+    "addressHebrew": "קמפוס הטכנולוגיה של MyCompany, תל אביב",
+    "phone": "+972-3-1234567",
+    "email": "library@MyCompany.com",
+    "website": "https://library.MyCompany.com",
+    "operatingHours": {
+      "sunday": "08:00-20:00",
+      "monday": "08:00-20:00",
+      "tuesday": "08:00-20:00",
+      "wednesday": "08:00-20:00",
+      "thursday": "08:00-20:00",
+      "friday": "08:00-14:00",
+      "saturday": "Closed",
+      "description": "שעות פעילות ספרייה MyCompany"
+    }
+  },
+  
+  "services": {
+    "bookService": {
+      "enabled": true,
+      "maxBooksPerMember": 10,
+      "defaultLoanPeriodDays": 14,
+      "maxRenewalTimes": 3,
+      "description": "שירות ניהול ספרים של MyCompany"
+    },
+    "memberService": {
+      "enabled": true,
+      "membershipTypes": [
+        {
+          "type": "MyCompany Employee",
+          "maxBooks": 15,
+          "loanPeriodDays": 21,
+          "description": "עובדי MyCompany"
+        },
+        {
+          "type": "MyCompany Student",
+          "maxBooks": 8,
+          "loanPeriodDays": 14,
+          "description": "סטודנטים של MyCompany"
+        },
+        {
+          "type": "MyCompany Guest",
+          "maxBooks": 3,
+          "loanPeriodDays": 7,
+          "description": "אורחי MyCompany"
+        }
+      ]
+    },
+    "loanService": {
+      "enabled": true,
+      "autoRenewalEnabled": true,
+      "overdueNotificationDays": [3, 7, 14],
+      "finePerDay": 2.0,
+      "currency": "ILS",
+      "description": "שירות השאלות של ספרייה MyCompany"
+    }
+  },
+  
+  "notifications": {
+    "email": {
+      "enabled": true,
+      "smtpServer": "smtp.MyCompany.com",
+      "smtpPort": 587,
+      "fromAddress": "library-notifications@MyCompany.com",
+      "fromName": "MyCompany Library System",
+      "templates": {
+        "loanConfirmation": "loan-confirmation-template.html",
+        "overdueNotice": "overdue-notice-template.html",
+        "returnReminder": "return-reminder-template.html"
+      },
+      "description": "הגדרות התראות דוא״ל של MyCompany"
+    },
+    "sms": {
+      "enabled": false,
+      "provider": "MyCompany SMS Gateway",
+      "apiKey": "${MyCompany_SMS_API_KEY}",
+      "description": "הגדרות התראות SMS של MyCompany"
+    }
+  },
+  
+  "security": {
+    "authentication": {
+      "method": "JWT",
+      "jwtSecret": "${MyCompany_JWT_SECRET}",
+      "tokenExpirationHours": 8,
+      "refreshTokenExpirationDays": 30,
+      "issuer": "MyCompany-Library-System",
+      "audience": "MyCompany-Library-Users"
+    },
+    "authorization": {
+      "roles": [
+        {
+          "name": "KYKYLibrarian",
+          "permissions": ["read", "write", "delete", "manage"],
+          "description": "ספרן MyCompany"
+        },
+        {
+          "name": "KYKYMember",
+          "permissions": ["read", "borrow", "profile"],
+          "description": "חבר ספרייה MyCompany"
+        },
+        {
+          "name": "KYKYAdmin",
+          "permissions": ["all"],
+          "description": "מנהל מערכת MyCompany"
+        }
+      ]
+    },
+    "encryption": {
+      "algorithm": "AES-256-GCM",
+      "keyRotationDays": 90,
+      "description": "הגדרות הצפנה למערכת MyCompany"
+    }
+  },
+  
+  "logging": {
+    "level": "Information",
+    "file": {
+      "enabled": true,
+      "path": "/var/log/MyCompany-library/",
+      "fileName": "MyCompany-library-{Date}.log",
+      "maxFileSizeMB": 50,
+      "retentionDays": 30
+    },
+    "console": {
+      "enabled": true,
+      "includeTimestamp": true,
+      "includeLogLevel": true
+    },
+    "database": {
+      "enabled": true,
+      "tableName": "MyCompany_SystemLogs",
+      "description": "רישום אירועים במסד נתונים MyCompany"
+    }
+  },
+  
+  "cache": {
+    "type": "Memory",
+    "defaultExpirationMinutes": 30,
+    "maxSizeEntries": 10000,
+    "policies": {
+      "books": {
+        "expirationMinutes": 60,
+        "priority": "High",
+        "description": "מטמון ספרי MyCompany"
+      },
+      "members": {
+        "expirationMinutes": 45,
+        "priority": "Medium",
+        "description": "מטמון חברי MyCompany"
+      }
+    }
+  },
+  
+  "monitoring": {
+    "healthCheck": {
+      "enabled": true,
+      "endpoint": "/health/MyCompany-library",
+      "intervalSeconds": 30
+    },
+    "metrics": {
+      "enabled": true,
+      "endpoint": "/metrics/MyCompany-library",
+      "includeSystemMetrics": true,
+      "includeApplicationMetrics": true
+    },
+    "alerts": {
+      "enabled": true,
+      "webhook": "https://alerts.MyCompany.com/library",
+      "thresholds": {
+        "cpuUsagePercent": 80,
+        "memoryUsagePercent": 85,
+        "errorRatePercent": 5
+      }
+    }
+  },
+  
+  "features": {
+    "digitalLibrary": {
+      "enabled": true,
+      "maxDigitalLoans": 5,
+      "digitalLoanPeriodDays": 7,
+      "description": "ספרייה דיגיטלית של MyCompany"
+    },
+    "reservations": {
+      "enabled": true,
+      "maxReservationsPerMember": 3,
+      "reservationHoldDays": 7,
+      "description": "מערכת הזמנות MyCompany"
+    },
+    "recommendations": {
+      "enabled": true,
+      "algorithm": "collaborative-filtering",
+      "maxRecommendations": 10,
+      "description": "מערכת המלצות ספרים MyCompany"
+    }
+  }
+}

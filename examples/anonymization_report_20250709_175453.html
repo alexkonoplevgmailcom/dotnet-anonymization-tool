@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Anonymization Validation Report</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; background-color: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0; }
+        .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; text-align: center; }
+        .stat-value { font-size: 2em; font-weight: bold; display: block; }
+        .stat-label { font-size: 0.9em; opacity: 0.9; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .success { color: #27ae60; font-weight: bold; }
+        .error { color: #e74c3c; font-weight: bold; }
+        .info { background-color: #ecf0f1; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .timestamp { color: #7f8c8d; font-size: 0.9em; }
+        .file-path { font-family: 'Courier New', monospace; background-color: #f8f9fa; padding: 2px 6px; border-radius: 3px; }
+        .file-link { text-decoration: none; color: #2c3e50; display: inline-block; transition: all 0.2s ease; }
+        .file-link:hover { color: #3498db; transform: translateX(2px); }
+        .file-link:hover .file-path { background-color: #e3f2fd; }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <h1>🛡️ Anonymization Validation Report</h1>
+        
+        <div class='info'>
+            <strong>Target Folder:</strong> <span class='file-path'>/Users/alexk/Projects/dotnet/Anonymization/examples</span><br>
+            <strong>Backup Location:</strong> <span class='file-path'>/Users/alexk/Projects/dotnet/Anonymization/examples/backup_20250709_175446</span><br>
+            <strong>Company Replaced:</strong> KYKY → MyCompany<br>
+            <strong>Generated:</strong> <span class='timestamp'>2025-07-09 17:54:53</span><br>
+            <strong>💡 Tip:</strong> Click on file names (🔗) in the table below to open them directly in VS Code
+        </div>
+
+        <h2>📊 Summary Statistics</h2>
+        <div class='summary'>
+            <div class='stat-card'>
+                <span class='stat-value'>58</span>
+                <span class='stat-label'>Files Processed</span>
+            </div>
+            <div class='stat-card'>
+                <span class='stat-value'>217</span>
+                <span class='stat-label'>Comments Removed</span>
+            </div>
+            <div class='stat-card'>
+                <span class='stat-value'>1416</span>
+                <span class='stat-label'>Company Replacements</span>
+            </div>
+            <div class='stat-card'>
+                <span class='stat-value'>29</span>
+                <span class='stat-label'>Files Backed Up</span>
+            </div>
+        </div>
+
+        <h2>📋 File-by-File Validation</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Status</th>
+                    <th>Original Size</th>
+                    <th>Processed Size</th>
+                    <th>Comments Removed</th>
+                    <th>Company Replacements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/pom.xml' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>pom.xml</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>20,538 bytes</td>
+                    <td>17,330 bytes</td>
+                    <td>38</td>
+                    <td>136</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/package.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>package.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>1,797 bytes</td>
+                    <td>1,892 bytes</td>
+                    <td>0</td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/kyky-config.xml' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>kyky-config.xml</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>7,030 bytes</td>
+                    <td>5,208 bytes</td>
+                    <td>22</td>
+                    <td>66</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/kyky-app-config.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>kyky-app-config.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>8,430 bytes</td>
+                    <td>8,785 bytes</td>
+                    <td>0</td>
+                    <td>71</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/kyky-library-config.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>kyky-library-config.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>5,633 bytes</td>
+                    <td>5,888 bytes</td>
+                    <td>0</td>
+                    <td>51</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/appsettings.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>appsettings.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>3,374 bytes</td>
+                    <td>3,559 bytes</td>
+                    <td>0</td>
+                    <td>37</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/kyky-library-settings.xml' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>kyky-library-settings.xml</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>15,622 bytes</td>
+                    <td>12,749 bytes</td>
+                    <td>30</td>
+                    <td>94</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/Program.cs' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>Program.cs</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>7,970 bytes</td>
+                    <td>5,587 bytes</td>
+                    <td>9</td>
+                    <td>71</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/kyky-config.xml' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>kyky-config.xml</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>3,208 bytes</td>
+                    <td>2,142 bytes</td>
+                    <td>16</td>
+                    <td>36</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/application.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>application.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>1,697 bytes</td>
+                    <td>1,807 bytes</td>
+                    <td>0</td>
+                    <td>22</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/KYKY.LibraryManagement.csproj.nuget.dgspec.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>KYKY.LibraryManagement.csproj.nuget.dgspec.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>4,012 bytes</td>
+                    <td>4,062 bytes</td>
+                    <td>0</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/project.assets.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>project.assets.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>93,530 bytes</td>
+                    <td>93,560 bytes</td>
+                    <td>0</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/Member.cs' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>Member.cs</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>8,452 bytes</td>
+                    <td>3,201 bytes</td>
+                    <td>6</td>
+                    <td>70</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/Book.cs' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>Book.cs</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>6,152 bytes</td>
+                    <td>2,005 bytes</td>
+                    <td>4</td>
+                    <td>46</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/MemberService.cs' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>MemberService.cs</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>11,815 bytes</td>
+                    <td>6,099 bytes</td>
+                    <td>15</td>
+                    <td>79</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/BookService.cs' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>BookService.cs</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>7,768 bytes</td>
+                    <td>3,519 bytes</td>
+                    <td>11</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/KYKY.LibraryManagement.AssemblyInfo.cs' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>KYKY.LibraryManagement.AssemblyInfo.cs</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>985 bytes</td>
+                    <td>585 bytes</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>.NETCoreApp,Version=v8.0.AssemblyAttributes.cs</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>194 bytes</td>
+                    <td>172 bytes</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/KYKY.LibraryManagement.GlobalUsings.g.cs' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>KYKY.LibraryManagement.GlobalUsings.g.cs</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>287 bytes</td>
+                    <td>265 bytes</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/kyky-library-config.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>kyky-library-config.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>5,633 bytes</td>
+                    <td>5,888 bytes</td>
+                    <td>0</td>
+                    <td>51</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/KYKY.LibraryManagement.runtimeconfig.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>KYKY.LibraryManagement.runtimeconfig.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>257 bytes</td>
+                    <td>257 bytes</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/appsettings.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>appsettings.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>3,374 bytes</td>
+                    <td>3,559 bytes</td>
+                    <td>0</td>
+                    <td>37</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/kyky-library-settings.xml' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>kyky-library-settings.xml</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>15,622 bytes</td>
+                    <td>12,749 bytes</td>
+                    <td>30</td>
+                    <td>94</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/KYKY.LibraryManagement.xml' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>KYKY.LibraryManagement.xml</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>24,062 bytes</td>
+                    <td>25,386 bytes</td>
+                    <td>0</td>
+                    <td>278</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/KYKY.LibraryManagement.deps.json' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>KYKY.LibraryManagement.deps.json</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>29,867 bytes</td>
+                    <td>29,882 bytes</td>
+                    <td>0</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/KYKYEcommerceApplication.java' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>KYKYEcommerceApplication.java</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>1,840 bytes</td>
+                    <td>914 bytes</td>
+                    <td>6</td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/Product.java' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>Product.java</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>2,090 bytes</td>
+                    <td>783 bytes</td>
+                    <td>9</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/ProductService.java' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>ProductService.java</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>2,754 bytes</td>
+                    <td>1,372 bytes</td>
+                    <td>9</td>
+                    <td>26</td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href='vscode://file//Users/alexk/Projects/dotnet/Anonymization/examples/OrderService.java' class='file-link' title='Open in VS Code'>
+                            <span class='file-path'>OrderService.java</span> 🔗
+                        </a>
+                    </td>
+                    <td class='success'>✅ Valid</td>
+                    <td>1,943 bytes</td>
+                    <td>779 bytes</td>
+                    <td>8</td>
+                    <td>17</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🎯 Validation Results</h2>
+        <div class='info'>
+            <p><strong>✅ Files with comments removed:</strong> 17 of 58</p>
+            <p><strong>🏢 Files with company name replacements:</strong> 26 of 58</p>
+            <p><strong>📁 Backup integrity:</strong> 29 files safely backed up</p>
+            <p><strong>🔍 Overall status:</strong> <span class='success'>Anonymization completed successfully</span></p>
+        </div>
+
+        <div class='timestamp'>
+            Report generated by Anonymization Tool on 2025-07-09 17:54:53
+        </div>
+    </div>
+</body>
+</html>

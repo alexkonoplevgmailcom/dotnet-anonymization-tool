@@ -1,0 +1,334 @@
+{
+  "applications": [
+    {
+      "name": "MyCompany User Management System",
+      "nameHebrew": "מערכת ניהול המשתמשים של MyCompany",
+      "description": "Advanced user management platform for MyCompany Corporation",
+      "descriptionHebrew": "פלטפורמה מתקדמת לניהול משתמשים עבור תאגיד MyCompany",
+      "version": "1.0.0",
+      "company": "MyCompany Corporation",
+      "companyHebrew": "תאגיד MyCompany",
+      "environment": "development",
+      "status": "active",
+      "lastUpdate": "2024-07-09T10:00:00Z"
+    }
+  ],
+  
+  "server": {
+    "host": "MyCompany-user-mgmt.MyCompany.com",
+    "port": 3000,
+    "protocol": "https",
+    "environment": "development",
+    "cluster": {
+      "enabled": false,
+      "workers": 4,
+      "description": "הגדרות אשכול שרתים של MyCompany"
+    },
+    "ssl": {
+      "enabled": true,
+      "certPath": "/etc/ssl/MyCompany/cert.pem",
+      "keyPath": "/etc/ssl/MyCompany/key.pem",
+      "caPath": "/etc/ssl/MyCompany/ca.pem"
+    }
+  },
+  
+  "database": {
+    "type": "MongoDB",
+    "host": "MyCompany-mongodb-cluster.MyCompany.com",
+    "port": 27017,
+    "name": "MyCompany_user_management",
+    "username": "MyCompany_db_admin",
+    "password": "${MyCompany_MONGODB_PASSWORD}",
+    "authSource": "admin",
+    "options": {
+      "useNewUrlParser": true,
+      "useUnifiedTopology": true,
+      "maxPoolSize": 50,
+      "minPoolSize": 5,
+      "maxIdleTimeMS": 30000,
+      "serverSelectionTimeoutMS": 5000,
+      "socketTimeoutMS": 45000
+    },
+    "connectionString": "mongodb://MyCompany_db_admin:${MyCompany_MONGODB_PASSWORD}@MyCompany-mongodb-cluster.MyCompany.com:27017/MyCompany_user_management?authSource=admin",
+    "description": "מסד נתונים MongoDB למערכת MyCompany"
+  },
+  
+  "redis": {
+    "host": "MyCompany-redis.MyCompany.com",
+    "port": 6379,
+    "password": "${MyCompany_REDIS_PASSWORD}",
+    "database": 0,
+    "keyPrefix": "MyCompany:user-mgmt:",
+    "ttl": 3600,
+    "description": "מטמון Redis למערכת ניהול משתמשי MyCompany"
+  },
+  
+  "authentication": {
+    "jwt": {
+      "secret": "${MyCompany_JWT_SECRET}",
+      "algorithm": "HS256",
+      "expiresIn": "24h",
+      "issuer": "MyCompany-User-Management",
+      "audience": "MyCompany-Users",
+      "refreshTokenExpiry": "7d"
+    },
+    "oauth": {
+      "google": {
+        "enabled": true,
+        "clientId": "${MyCompany_GOOGLE_CLIENT_ID}",
+        "clientSecret": "${MyCompany_GOOGLE_CLIENT_SECRET}",
+        "callbackURL": "https://MyCompany-user-mgmt.MyCompany.com/auth/google/callback"
+      },
+      "microsoft": {
+        "enabled": true,
+        "clientId": "${MyCompany_MICROSOFT_CLIENT_ID}",
+        "clientSecret": "${MyCompany_MICROSOFT_CLIENT_SECRET}",
+        "callbackURL": "https://MyCompany-user-mgmt.MyCompany.com/auth/microsoft/callback"
+      }
+    },
+    "session": {
+      "secret": "${MyCompany_SESSION_SECRET}",
+      "resave": false,
+      "saveUninitialized": false,
+      "cookie": {
+        "secure": true,
+        "httpOnly": true,
+        "maxAge": 86400000,
+        "sameSite": "strict"
+      }
+    }
+  },
+  
+  "security": {
+    "cors": {
+      "enabled": true,
+      "origin": [
+        "https://MyCompany.com",
+        "https://admin.MyCompany.com",
+        "https://portal.MyCompany.com"
+      ],
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH"],
+      "allowedHeaders": [
+        "Content-Type",
+        "Authorization",
+        "X-MyCompany-Token",
+        "X-Requested-With"
+      ],
+      "credentials": true
+    },
+    "rateLimit": {
+      "enabled": true,
+      "windowMs": 900000,
+      "max": 100,
+      "message": {
+        "error": "Too many requests from this IP for MyCompany system",
+        "errorHebrew": "יותר מדי בקשות מכתובת IP זו למערכת MyCompany"
+      },
+      "standardHeaders": true,
+      "legacyHeaders": false
+    },
+    "helmet": {
+      "enabled": true,
+      "contentSecurityPolicy": {
+        "directives": {
+          "defaultSrc": ["'self'"],
+          "styleSrc": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+          "fontSrc": ["'self'", "https://fonts.gstatic.com"],
+          "imgSrc": ["'self'", "data:", "https:"],
+          "scriptSrc": ["'self'"]
+        }
+      }
+    }
+  },
+  
+  "api": {
+    "version": "v1",
+    "baseUrl": "/api/MyCompany/v1",
+    "documentation": {
+      "enabled": true,
+      "path": "/api/docs/MyCompany",
+      "title": "MyCompany User Management API",
+      "titleHebrew": "API לניהול משתמשי MyCompany",
+      "description": "REST API for MyCompany user management system",
+      "descriptionHebrew": "REST API למערכת ניהול משתמשי MyCompany"
+    },
+    "pagination": {
+      "defaultLimit": 20,
+      "maxLimit": 100
+    },
+    "validation": {
+      "strictMode": true,
+      "sanitizeInput": true
+    }
+  },
+  
+  "services": {
+    "userService": {
+      "enabled": true,
+      "cache": {
+        "enabled": true,
+        "ttl": 1800,
+        "description": "מטמון שירות משתמשי MyCompany"
+      },
+      "validation": {
+        "email": {
+          "required": true,
+          "format": "email",
+          "domains": ["MyCompany.com", "gmail.com", "outlook.com"]
+        },
+        "password": {
+          "minLength": 8,
+          "requireUppercase": true,
+          "requireLowercase": true,
+          "requireNumbers": true,
+          "requireSpecialChars": true
+        }
+      }
+    },
+    "authService": {
+      "enabled": true,
+      "maxLoginAttempts": 5,
+      "lockoutDuration": 900000,
+      "passwordResetExpiry": 3600000,
+      "twoFactorAuth": {
+        "enabled": false,
+        "provider": "TOTP",
+        "issuer": "MyCompany User Management"
+      }
+    },
+    "notificationService": {
+      "enabled": true,
+      "email": {
+        "provider": "SendGrid",
+        "apiKey": "${MyCompany_SENDGRID_API_KEY}",
+        "fromEmail": "noreply@MyCompany.com",
+        "fromName": "MyCompany User Management System"
+      },
+      "sms": {
+        "provider": "Twilio",
+        "accountSid": "${MyCompany_TWILIO_SID}",
+        "authToken": "${MyCompany_TWILIO_TOKEN}",
+        "fromNumber": "+972501234567"
+      }
+    }
+  },
+  
+  "logging": {
+    "level": "info",
+    "format": "combined",
+    "outputs": [
+      {
+        "type": "console",
+        "enabled": true,
+        "colorize": true,
+        "timestamp": true
+      },
+      {
+        "type": "file",
+        "enabled": true,
+        "filename": "/var/log/MyCompany/user-management-%DATE%.log",
+        "maxSize": "20m",
+        "maxFiles": "14d",
+        "datePattern": "YYYY-MM-DD"
+      },
+      {
+        "type": "database",
+        "enabled": true,
+        "collection": "MyCompany_system_logs",
+        "level": "warn"
+      }
+    ],
+    "auditLog": {
+      "enabled": true,
+      "events": [
+        "user.create",
+        "user.update",
+        "user.delete",
+        "user.login",
+        "user.logout",
+        "user.password.change"
+      ],
+      "retention": "365d"
+    }
+  },
+  
+  "monitoring": {
+    "healthCheck": {
+      "enabled": true,
+      "endpoint": "/health/MyCompany",
+      "interval": 30000,
+      "timeout": 5000,
+      "checks": [
+        "database",
+        "redis",
+        "memory",
+        "disk"
+      ]
+    },
+    "metrics": {
+      "enabled": true,
+      "endpoint": "/metrics/MyCompany",
+      "prometheus": {
+        "enabled": true,
+        "register": true,
+        "prefix": "MyCompany_user_mgmt_"
+      }
+    },
+    "alerts": {
+      "enabled": true,
+      "webhook": "https://alerts.MyCompany.com/webhook",
+      "channels": [
+        {
+          "name": "slack",
+          "url": "${MyCompany_SLACK_WEBHOOK}",
+          "events": ["error", "critical"]
+        },
+        {
+          "name": "email",
+          "recipients": ["devops@MyCompany.com", "support@MyCompany.com"],
+          "events": ["critical"]
+        }
+      ]
+    }
+  },
+  
+  "features": {
+    "userProfiles": {
+      "enabled": true,
+      "avatarUpload": {
+        "enabled": true,
+        "maxSize": "5MB",
+        "allowedTypes": ["image/jpeg", "image/png", "image/gif"],
+        "storage": "s3",
+        "bucket": "MyCompany-user-avatars"
+      }
+    },
+    "roleManagement": {
+      "enabled": true,
+      "defaultRole": "user",
+      "availableRoles": [
+        {
+          "name": "admin",
+          "nameHebrew": "מנהל",
+          "permissions": ["all"]
+        },
+        {
+          "name": "manager",
+          "nameHebrew": "מנהל צוות",
+          "permissions": ["users.read", "users.create", "users.update"]
+        },
+        {
+          "name": "user",
+          "nameHebrew": "משתמש",
+          "permissions": ["profile.read", "profile.update"]
+        }
+      ]
+    },
+    "auditTrail": {
+      "enabled": true,
+      "retention": "2y",
+      "anonymizeAfter": "1y",
+      "description": "מעקב פעילות משתמשי MyCompany"
+    }
+  }
+}

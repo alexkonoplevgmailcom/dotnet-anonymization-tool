@@ -1,0 +1,14 @@
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/bin/Debug/net9.0/Anonimization
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/bin/Debug/net9.0/Anonimization.deps.json
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/bin/Debug/net9.0/Anonimization.runtimeconfig.json
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/bin/Debug/net9.0/Anonimization.dll
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/bin/Debug/net9.0/Anonimization.pdb
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.AssemblyInfoInputs.cache
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.AssemblyInfo.cs
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.csproj.CoreCompileInputs.cache
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.dll
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/refint/Anonimization.dll
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.pdb
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/Anonimization.genruntimeconfig.cache
+/Users/alexk/Projects/dotnet/Anonymization/src/Anonimization/obj/Debug/net9.0/ref/Anonimization.dll

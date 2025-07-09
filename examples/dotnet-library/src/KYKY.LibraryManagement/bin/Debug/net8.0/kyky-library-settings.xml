@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kykyLibrarySettings>
+    <general>
+        <application>
+            <name>MyCompany Library Management System</name>
+            <nameHebrew>מערכת ניהול הספרייה של MyCompany</nameHebrew>
+            <version>1.0.0</version>
+            <company>MyCompany Corporation</company>
+            <companyHebrew>תאגיד MyCompany</companyHebrew>
+            <description>Advanced library management system by MyCompany</description>
+            <descriptionHebrew>מערכת ניהול ספרייה מתקדמת של MyCompany</descriptionHebrew>
+            <buildDate>2024-07-09</buildDate>
+            <environment>Development</environment>
+        </application>
+        <localization>
+            <defaultLanguage>he</defaultLanguage>
+            <supportedLanguages>
+                <language code="he" name="עברית" direction="rtl"/>
+                <language code="en" name="English" direction="ltr"/>
+                <language code="ar" name="العربية" direction="rtl"/>
+            </supportedLanguages>
+            <timezone>Asia/Jerusalem</timezone>
+            <dateFormat>dd/MM/yyyy</dateFormat>
+            <timeFormat>HH:mm:ss</timeFormat>
+            <currency>ILS</currency>
+            <currencySymbol>₪</currencySymbol>
+        </localization>
+    </general>
+    <library>
+        <facility>
+            <name>MyCompany Central Library</name>
+            <nameHebrew>הספרייה המרכזית של MyCompany</nameHebrew>
+            <code>MyCompany-LIB-001</code>
+            <established>2020</established>
+            <address>
+                <street>123 MyCompany Technology Boulevard</street>
+                <streetHebrew>שדרות הטכנולוגיה של MyCompany 123</streetHebrew>
+                <city>Tel Aviv</city>
+                <cityHebrew>תל אביב</cityHebrew>
+                <postalCode>6789012</postalCode>
+                <country>Israel</country>
+                <countryHebrew>ישראל</countryHebrew>
+            </address>
+            <contact>
+                <phone>+972-3-1234567</phone>
+                <fax>+972-3-1234568</fax>
+                <email>library@MyCompany.com</email>
+                <website>https://library.MyCompany.com</website>
+                <socialMedia>
+                    <facebook>https://facebook.com/MyCompany.library</facebook>
+                    <instagram>https://instagram.com/MyCompany_library</instagram>
+                </socialMedia>
+            </contact>
+        </facility>
+        <operatingHours>
+            <weekday name="sunday" dayHebrew="ראשון">
+                <open>08:00</open>
+                <close>20:00</close>
+                <description>יום ראשון - שעות רגילות</description>
+            </weekday>
+            <weekday name="monday" dayHebrew="שני">
+                <open>08:00</open>
+                <close>20:00</close>
+                <description>יום שני - שעות רגילות</description>
+            </weekday>
+            <weekday name="tuesday" dayHebrew="שלישי">
+                <open>08:00</open>
+                <close>20:00</close>
+                <description>יום שלישי - שעות רגילות</description>
+            </weekday>
+            <weekday name="wednesday" dayHebrew="רביעי">
+                <open>08:00</open>
+                <close>20:00</close>
+                <description>יום רביעי - שעות רגילות</description>
+            </weekday>
+            <weekday name="thursday" dayHebrew="חמישי">
+                <open>08:00</open>
+                <close>20:00</close>
+                <description>יום חמישי - שעות רגילות</description>
+            </weekday>
+            <weekday name="friday" dayHebrew="שישי">
+                <open>08:00</open>
+                <close>14:00</close>
+                <description>יום שישי - שעות מקוצרות</description>
+            </weekday>
+            <weekday name="saturday" dayHebrew="שבת">
+                <open>Closed</open>
+                <close>Closed</close>
+                <description>יום שבת - סגור</description>
+            </weekday>
+        </operatingHours>
+        <capacity>
+            <totalBooks>50000</totalBooks>
+            <digitalBooks>15000</digitalBooks>
+            <readingSeats>200</readingSeats>
+            <studyRooms>12</studyRooms>
+            <computerStations>25</computerStations>
+            <description>קיבולת מתקני ספרייה MyCompany</description>
+        </capacity>
+    </library>
+    <database>
+        <connection>
+            <server>MyCompany-library-db-cluster.MyCompany.com</server>
+            <port>1433</port>
+            <database>MyCompany_Library_Management</database>
+            <schema>dbo</schema>
+            <username>MyCompany_library_admin</username>
+            <password>${MyCompany_LIBRARY_DB_PASSWORD}</password>
+            <connectionTimeout>30</connectionTimeout>
+            <commandTimeout>60</commandTimeout>
+            <connectionString>Server=MyCompany-library-db-cluster.MyCompany.com,1433;Database=MyCompany_Library_Management;User Id=MyCompany_library_admin;Password=${MyCompany_LIBRARY_DB_PASSWORD};TrustServerCertificate=true;</connectionString>
+        </connection>
+        <pooling>
+            <enabled>true</enabled>
+            <minPoolSize>10</minPoolSize>
+            <maxPoolSize>100</maxPoolSize>
+            <connectionLifetime>300</connectionLifetime>
+            <description>מאגר חיבורים למסד נתונים MyCompany</description>
+        </pooling>
+        <backup>
+            <enabled>true</enabled>
+            <schedule>daily</schedule>
+            <time>02:00</time>
+            <retentionDays>30</retentionDays>
+            <location>/backups/MyCompany-library/</location>
+            <compression>true</compression>
+        </backup>
+    </database>
+    <services>
+        <bookManagement>
+            <enabled>true</enabled>
+            <catalogingSystem>MARC21</catalogingSystem>
+            <classificationSystem>DDC</classificationSystem>
+            <autoISBNLookup>true</autoISBNLookup>
+            <duplicateDetection>true</duplicateDetection>
+            <barcodePrefix>MyCompany</barcodePrefix>
+            <description>שירות ניהול ספרים מתקדם של MyCompany</description>
+            <categories>
+                <category code="100" name="Philosophy" nameHebrew="פילוסופיה"/>
+                <category code="200" name="Religion" nameHebrew="דת"/>
+                <category code="300" name="Social Sciences" nameHebrew="מדעי החברה"/>
+                <category code="400" name="Language" nameHebrew="שפה"/>
+                <category code="500" name="Science" nameHebrew="מדע"/>
+                <category code="600" name="Technology" nameHebrew="טכנולוגיה"/>
+                <category code="700" name="Arts" nameHebrew="אמנות"/>
+                <category code="800" name="Literature" nameHebrew="ספרות"/>
+                <category code="900" name="History" nameHebrew="היסטוריה"/>
+                <category code="MyCompany" name="MyCompany Publications" nameHebrew="פרסומי MyCompany"/>
+            </categories>
+        </bookManagement>
+        <memberManagement>
+            <enabled>true</enabled>
+            <membershipValidationDays>365</membershipValidationDays>
+            <autoRenewal>true</autoRenewal>
+            <memberCardPrefix>MyCompany-MEM</memberCardPrefix>
+            <photoRequired>false</photoRequired>
+            <membershipTypes>
+                <type name="KYKYEmployee" nameHebrew="עובד MyCompany">
+                    <maxBooks>15</maxBooks>
+                    <loanPeriodDays>21</loanPeriodDays>
+                    <renewalLimit>5</renewalLimit>
+                    <finePerDay>1.0</finePerDay>
+                    <priority>1</priority>
+                </type>
+                <type name="KYKYStudent" nameHebrew="סטודנט MyCompany">
+                    <maxBooks>10</maxBooks>
+                    <loanPeriodDays>14</loanPeriodDays>
+                    <renewalLimit>3</renewalLimit>
+                    <finePerDay>0.5</finePerDay>
+                    <priority>2</priority>
+                </type>
+                <type name="KYKYGuest" nameHebrew="אורח MyCompany">
+                    <maxBooks>3</maxBooks>
+                    <loanPeriodDays>7</loanPeriodDays>
+                    <renewalLimit>1</renewalLimit>
+                    <finePerDay>2.0</finePerDay>
+                    <priority>3</priority>
+                </type>
+            </membershipTypes>
+        </memberManagement>
+        <loanManagement>
+            <enabled>true</enabled>
+            <autoReminders>true</autoReminders>
+            <reminderDaysBefore>3</reminderDaysBefore>
+            <overdueGracePeriodDays>1</overdueGracePeriodDays>
+            <maxOverdueBooks>5</maxOverdueBooks>
+            <fines>
+                <currency>ILS</currency>
+                <dailyFineAmount>2.0</dailyFineAmount>
+                <maxFinePerBook>50.0</maxFinePerBook>
+                <lostBookFineMultiplier>3.0</lostBookFineMultiplier>
+                <gracePeriodDays>1</gracePeriodDays>
+            </fines>
+        </loanManagement>
+    </services>
+    <security>
+        <authentication>
+            <method>ActiveDirectory</method>
+            <domain>MyCompany.com</domain>
+            <ldapServer>ldap://dc.MyCompany.com</ldapServer>
+            <sessionTimeoutMinutes>480</sessionTimeoutMinutes>
+            <passwordPolicy>
+                <minLength>8</minLength>
+                <requireUppercase>true</requireUppercase>
+                <requireLowercase>true</requireLowercase>
+                <requireNumbers>true</requireNumbers>
+                <requireSpecialChars>true</requireSpecialChars>
+                <expirationDays>90</expirationDays>
+            </passwordPolicy>
+        </authentication>
+        <authorization>
+            <roles>
+                <role name="KYKYLibrarian" description="ספרן ראשי של MyCompany">
+                    <permissions>
+                        <permission>ManageBooks</permission>
+                        <permission>ManageMembers</permission>
+                        <permission>ProcessLoans</permission>
+                        <permission>GenerateReports</permission>
+                        <permission>ViewStatistics</permission>
+                    </permissions>
+                </role>
+                <role name="KYKYAssistant" description="עוזר ספרן של MyCompany">
+                    <permissions>
+                        <permission>ProcessLoans</permission>
+                        <permission>SearchBooks</permission>
+                        <permission>ViewMemberInfo</permission>
+                    </permissions>
+                </role>
+                <role name="KYKYAdmin" description="מנהל מערכת MyCompany">
+                    <permissions>
+                        <permission>SystemConfiguration</permission>
+                        <permission>UserManagement</permission>
+                        <permission>DatabaseBackup</permission>
+                        <permission>SystemLogs</permission>
+                    </permissions>
+                </role>
+            </roles>
+        </authorization>
+        <audit>
+            <enabled>true</enabled>
+            <logLevel>Information</logLevel>
+            <retentionDays>365</retentionDays>
+            <auditActions>
+                <action>BookAdd</action>
+                <action>BookRemove</action>
+                <action>MemberAdd</action>
+                <action>MemberUpdate</action>
+                <action>LoanCreate</action>
+                <action>LoanReturn</action>
+                <action>SystemLogin</action>
+                <action>SystemLogout</action>
+            </auditActions>
+        </audit>
+    </security>
+    <monitoring>
+        <performance>
+            <enabled>true</enabled>
+            <sampleIntervalSeconds>60</sampleIntervalSeconds>
+            <thresholds>
+                <cpuUsagePercent>80</cpuUsagePercent>
+                <memoryUsagePercent>85</memoryUsagePercent>
+                <diskUsagePercent>90</diskUsagePercent>
+                <responseTimeMilliseconds>2000</responseTimeMilliseconds>
+            </thresholds>
+        </performance>
+        <reporting>
+            <enabled>true</enabled>
+            <scheduledReports>
+                <report name="DailyStatistics" schedule="daily" time="23:00" format="PDF"/>
+                <report name="WeeklyInventory" schedule="weekly" day="sunday" time="06:00" format="Excel"/>
+                <report name="MonthlyUsage" schedule="monthly" day="1" time="08:00" format="PDF"/>
+            </scheduledReports>
+            <reportRecipients>
+                <recipient email="library-manager@MyCompany.com" reports="all"/>
+                <recipient email="it-admin@MyCompany.com" reports="system"/>
+            </reportRecipients>
+        </reporting>
+    </monitoring>
+</kykyLibrarySettings>

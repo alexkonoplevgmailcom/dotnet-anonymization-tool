@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <general>
+        <application name="MyCompany E-commerce Platform">
+            <displayName>פלטפורמת המסחר האלקטרוני של MyCompany</displayName>
+            <version>1.0.0</version>
+            <company>MyCompany Corporation</company>
+            <description>מערכת מסחר אלקטרוני מתקדמת של חברת MyCompany</description>
+        </application>
+    </general>
+    <database>
+        <connection>
+            <host>MyCompany-database.MyCompany.com</host>
+            <port>5432</port>
+            <database>MyCompany_ecommerce_db</database>
+            <username>MyCompany_db_user</username>
+            <password>${MyCompany_DATABASE_PASSWORD}</password>
+        </connection>
+        <pooling>
+            <minConnections>5</minConnections>
+            <maxConnections>50</maxConnections>
+            <connectionTimeout>30000</connectionTimeout>
+        </pooling>
+    </database>
+    <services>
+        <productService>
+            <enabled>true</enabled>
+            <cacheSize>10000</cacheSize>
+            <cacheExpirationMinutes>60</cacheExpirationMinutes>
+            <description>שירות ניהול מוצרים של MyCompany</description>
+        </productService>
+        <orderService>
+            <enabled>true</enabled>
+            <maxOrdersPerHour>1000</maxOrdersPerHour>
+            <orderRetentionDays>365</orderRetentionDays>
+            <description>שירות ניהול הזמנות של MyCompany</description>
+        </orderService>
+    </services>
+    <security>
+        <authentication>
+            <method>JWT</method>
+            <tokenExpirationHours>24</tokenExpirationHours>
+            <secretKey>${MyCompany_JWT_SECRET}</secretKey>
+        </authentication>
+        <encryption>
+            <algorithm>AES-256-GCM</algorithm>
+            <keyRotationDays>90</keyRotationDays>
+        </encryption>
+    </security>
+    <logging>
+        <level>INFO</level>
+        <file>/var/log/MyCompany/ecommerce.log</file>
+        <maxSize>100MB</maxSize>
+        <retentionDays>30</retentionDays>
+        <description>מערכת רישום אירועים של MyCompany</description>
+    </logging>
+</configuration>

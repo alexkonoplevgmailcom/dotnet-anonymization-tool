@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kykyUserManagement>
+    <general>
+        <application>
+            <name>MyCompany User Management System</name>
+            <nameHebrew>מערכת ניהול המשתמשים של MyCompany</nameHebrew>
+            <version>1.0.0</version>
+            <company>MyCompany Corporation</company>
+            <companyHebrew>תאגיד MyCompany</companyHebrew>
+            <description>Advanced user management platform for MyCompany</description>
+            <descriptionHebrew>פלטפורמה מתקדמת לניהול משתמשים של MyCompany</descriptionHebrew>
+        </application>
+        <localization>
+            <defaultLanguage>en</defaultLanguage>
+            <supportedLanguages>
+                <language code="en">English</language>
+                <language code="he">עברית</language>
+            </supportedLanguages>
+            <timezone>Asia/Jerusalem</timezone>
+            <dateFormat>dd/MM/yyyy</dateFormat>
+        </localization>
+    </general>
+    <server>
+        <host>MyCompany-user-mgmt.MyCompany.com</host>
+        <port>3000</port>
+        <environment>development</environment>
+        <security>
+            <cors>
+                <enabled>true</enabled>
+                <allowedOrigins>
+                    <origin>https://MyCompany.com</origin>
+                    <origin>https://admin.MyCompany.com</origin>
+                    <origin>https://portal.MyCompany.com</origin>
+                </allowedOrigins>
+            </cors>
+            <rateLimit>
+                <enabled>true</enabled>
+                <maxRequests>100</maxRequests>
+                <windowMinutes>15</windowMinutes>
+                <description>הגבלת קצב למערכת MyCompany</description>
+            </rateLimit>
+        </security>
+    </server>
+    <database>
+        <connection>
+            <type>MongoDB</type>
+            <host>MyCompany-db-cluster.MyCompany.com</host>
+            <port>27017</port>
+            <database>MyCompany_user_management</database>
+            <username>MyCompany_db_user</username>
+            <password>${MyCompany_DB_PASSWORD}</password>
+            <connectionString>mongodb://MyCompany_db_user:${MyCompany_DB_PASSWORD}@MyCompany-db-cluster.MyCompany.com:27017/MyCompany_user_management</connectionString>
+        </connection>
+        <collections>
+            <collection name="MyCompany_users">
+                <description>אוסף משתמשי MyCompany</description>
+                <indexes>
+                    <index field="email" unique="true"/>
+                    <index field="department"/>
+                    <index field="isActive"/>
+                </indexes>
+            </collection>
+            <collection name="MyCompany_sessions">
+                <description>אוסף הפעלות משתמשי MyCompany</description>
+                <ttl>86400</ttl> 
+            </collection>
+        </collections>
+    </database>
+    <authentication>
+        <jwt>
+            <secret>${MyCompany_JWT_SECRET}</secret>
+            <expirationHours>24</expirationHours>
+            <issuer>MyCompany-User-Management</issuer>
+            <algorithm>HS256</algorithm>
+        </jwt>
+        <password>
+            <minLength>8</minLength>
+            <requireUppercase>true</requireUppercase>
+            <requireNumbers>true</requireNumbers>
+            <requireSpecialChars>true</requireSpecialChars>
+            <saltRounds>12</saltRounds>
+            <description>מדיניות סיסמאות למערכת MyCompany</description>
+        </password>
+    </authentication>
+    <features>
+        <userProfile>
+            <enabled>true</enabled>
+            <maxAvatarSize>5MB</maxAvatarSize>
+            <allowedAvatarFormats>jpg,png,gif</allowedAvatarFormats>
+            <description>פרופיל משתמש במערכת MyCompany</description>
+        </userProfile>
+        <permissions>
+            <enabled>true</enabled>
+            <defaultPermissions>
+                <permission>read</permission>
+                <permission>profile.update</permission>
+            </defaultPermissions>
+            <availablePermissions>
+                <permission name="admin" description="הרשאות מנהל מערכת MyCompany"/>
+                <permission name="user.create" description="יצירת משתמשים חדשים"/>
+                <permission name="user.delete" description="מחיקת משתמשים"/>
+                <permission name="reports.view" description="צפייה בדוחות MyCompany"/>
+            </availablePermissions>
+        </permissions>
+        <audit>
+            <enabled>true</enabled>
+            <logLevel>INFO</logLevel>
+            <retentionDays>365</retentionDays>
+            <logFile>/var/log/MyCompany/user-management-audit.log</logFile>
+            <description>מערכת ביקורת פעילות משתמשי MyCompany</description>
+        </audit>
+    </features>
+    <monitoring>
+        <healthCheck>
+            <endpoint>/health/MyCompany</endpoint>
+            <intervalSeconds>30</intervalSeconds>
+            <enabled>true</enabled>
+        </healthCheck>
+        <metrics>
+            <enabled>true</enabled>
+            <endpoint>/metrics/MyCompany</endpoint>
+            <collectUserStats>true</collectUserStats>
+            <collectSystemStats>true</collectSystemStats>
+        </metrics>
+    </monitoring>
+</kykyUserManagement>

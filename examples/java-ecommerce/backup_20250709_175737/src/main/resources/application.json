@@ -1,0 +1,67 @@
+{
+  "applicationName": "MyCompany E-commerce Platform",
+  "applicationDescription": "מערכת מסחר אלקטרוני של חברת MyCompany",
+  "version": "1.0.0",
+  "company": "MyCompany Corporation",
+  "companyDescription": "חברת MyCompany לפתרונות טכנולוגיים",
+  
+  "database": {
+    "host": "MyCompany-db-server.MyCompany.com",
+    "port": 5432,
+    "name": "MyCompany_ecommerce",
+    "username": "MyCompany_user",
+    "password": "${MyCompany_DB_PASSWORD}",
+    "connectionPoolSize": 20,
+    "description": "הגדרות מסד נתונים של MyCompany"
+  },
+  
+  "api": {
+    "baseUrl": "https://api.MyCompany.com/ecommerce",
+    "version": "v1",
+    "timeout": 30000,
+    "rateLimiting": {
+      "enabled": true,
+      "maxRequestsPerMinute": 1000,
+      "description": "הגבלת קצב בקשות למערכת MyCompany"
+    }
+  },
+  
+  "features": {
+    "productCatalog": {
+      "enabled": true,
+      "maxProductsPerCategory": 10000,
+      "description": "קטלוג מוצרים של MyCompany"
+    },
+    "orderProcessing": {
+      "enabled": true,
+      "maxOrdersPerDay": 50000,
+      "description": "עיבוד הזמנות MyCompany"
+    },
+    "paymentGateway": {
+      "enabled": true,
+      "supportedCurrencies": ["USD", "EUR", "ILS"],
+      "description": "שער תשלומים של MyCompany"
+    }
+  },
+  
+  "logging": {
+    "level": "INFO",
+    "outputPath": "/var/log/MyCompany-ecommerce/",
+    "maxFileSize": "100MB",
+    "description": "הגדרות רישום אירועים של MyCompany"
+  },
+  
+  "security": {
+    "jwtSecret": "${MyCompany_JWT_SECRET}",
+    "tokenExpirationMinutes": 60,
+    "encryptionAlgorithm": "AES-256",
+    "description": "הגדרות אבטחה של מערכת MyCompany"
+  },
+  
+  "monitoring": {
+    "healthCheckEndpoint": "/health/MyCompany",
+    "metricsEndpoint": "/metrics/MyCompany",
+    "alertingEnabled": true,
+    "description": "ניטור מערכת MyCompany"
+  }
+}

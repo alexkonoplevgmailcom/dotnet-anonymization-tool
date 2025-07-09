@@ -1,0 +1,578 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyCompany.LibraryManagement</name>
+    </assembly>
+    <members>
+        <member name="T:MyCompany.LibraryManagement.Models.Book">
+            <summary>
+            Book model for MyCompany Library Management System
+            מודל ספר למערכת ניהול הספרייה של MyCompany
+            Represents a book in the MyCompany library catalog
+            מייצג ספר בקטלוג הספרייה של MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.Id">
+            <summary>
+            Unique identifier for book in MyCompany system
+            מזהה יחיד לספר במערכת MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.Title">
+            <summary>
+            Title of the book in MyCompany catalog
+            כותרת הספר בקטלוג MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.Author">
+            <summary>
+            Author of the book
+            מחבר הספר
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.ISBN">
+            <summary>
+            ISBN number for MyCompany book tracking
+            מספר ISBN למעקב ספרי MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.PublishedYear">
+            <summary>
+            Year the book was published
+            שנת הוצאת הספר
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.Publisher">
+            <summary>
+            Publisher of the book
+            מוציא לאור של הספר
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.Pages">
+            <summary>
+            Number of pages in the book
+            מספר דפים בספר
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.Category">
+            <summary>
+            Category of the book in MyCompany classification
+            קטגוריית הספר בסיווג MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.Language">
+            <summary>
+            Language of the book
+            שפת הספר
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.IsAvailable">
+            <summary>
+            Availability status in MyCompany library
+            סטטוס זמינות בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.DateAdded">
+            <summary>
+            Date when book was added to MyCompany catalog
+            תאריך הוספת הספר לקטלוג MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.Location">
+            <summary>
+            Location of book in MyCompany library
+            מיקום הספר בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Book.Summary">
+            <summary>
+            Summary or description of the book
+            תקציר או תיאור הספר
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Book.GetBookInfo">
+            <summary>
+            Get full book information for MyCompany display
+            קבלת מידע מלא על הספר לתצוגה MyCompany
+            </summary>
+            <returns>Formatted book information</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Book.CanBeBorrowed">
+            <summary>
+            Check if book is available for loan in MyCompany system
+            בדיקה האם הספר זמין להשאלה במערכת MyCompany
+            </summary>
+            <returns>True if available, false otherwise</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Book.MarkAsBorrowed">
+            <summary>
+            Mark book as borrowed in MyCompany system
+            סימון הספר כמושאל במערכת MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Book.MarkAsReturned">
+            <summary>
+            Mark book as returned to MyCompany library
+            סימון הספר כמוחזר לספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Book.GetBookAge">
+            <summary>
+            Get book age in years
+            קבלת גיל הספר בשנים
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Book.ToString">
+            <summary>
+            Convert book to display format for MyCompany reports
+            המרת הספר לפורמט תצוגה לדוחות MyCompany
+            </summary>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Models.BookLocation">
+            <summary>
+            Book location in MyCompany library
+            מיקום ספר בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.BookLocation.Floor">
+            <summary>
+            Floor number in MyCompany library building
+            מספר קומה בבניין ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.BookLocation.Section">
+            <summary>
+            Section in MyCompany library
+            מדור בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.BookLocation.Shelf">
+            <summary>
+            Shelf number in MyCompany library
+            מספר מדף בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.BookLocation.ToString">
+            <summary>
+            Get complete location string for MyCompany library
+            קבלת מחרוזת מיקום מלאה לספרייה MyCompany
+            </summary>
+            <returns>Formatted location string</returns>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Models.Member">
+            <summary>
+            Member model for MyCompany Library Management System
+            מודל חבר למערכת ניהול הספרייה של MyCompany
+            Represents a library member in MyCompany system
+            מייצג חבר ספרייה במערכת MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.Id">
+            <summary>
+            Unique member ID in MyCompany system
+            מזהה חבר יחיד במערכת MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.FirstName">
+            <summary>
+            First name of MyCompany library member
+            שם פרטי של חבר ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.LastName">
+            <summary>
+            Last name of MyCompany library member
+            שם משפחה של חבר ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.Email">
+            <summary>
+            Email address of MyCompany member
+            כתובת דוא"ל של חבר MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.Phone">
+            <summary>
+            Phone number of MyCompany library member
+            מספר טלפון של חבר ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.Address">
+            <summary>
+            Address of MyCompany member
+            כתובת של חבר MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.JoinDate">
+            <summary>
+            Date when member joined MyCompany library
+            תאריך הצטרפות חבר לספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.MembershipType">
+            <summary>
+            Membership type in MyCompany library system
+            סוג חברות במערכת ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.IsActive">
+            <summary>
+            Active status of MyCompany member
+            סטטוס פעילות של חבר MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.DateOfBirth">
+            <summary>
+            Date of birth of MyCompany member
+            תאריך לידה של חבר MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.MaxBooksAllowed">
+            <summary>
+            Maximum books that can be borrowed by MyCompany member
+            מספר מקסימלי של ספרים שחבר MyCompany יכול לשאול
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.CurrentBooksCount">
+            <summary>
+            Current number of books borrowed by MyCompany member
+            מספר נוכחי של ספרים שחבר MyCompany שאל
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.Member.Preferences">
+            <summary>
+            Member preferences in MyCompany library
+            העדפות חבר בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Member.GetFullName">
+            <summary>
+            Get full name of MyCompany library member
+            קבלת שם מלא של חבר ספרייה MyCompany
+            </summary>
+            <returns>Full name</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Member.GetDisplayName">
+            <summary>
+            Get display name for MyCompany system
+            קבלת שם תצוגה למערכת MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Member.CanBorrowBooks">
+            <summary>
+            Check if member can borrow more books in MyCompany system
+            בדיקה האם החבר יכול לשאול עוד ספרים במערכת MyCompany
+            </summary>
+            <returns>True if can borrow, false otherwise</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Member.BorrowBook">
+            <summary>
+            Increment borrowed books count for MyCompany member
+            הגדלת מונה ספרים מושאלים לחבר MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Member.ReturnBook">
+            <summary>
+            Decrement borrowed books count for MyCompany member
+            הקטנת מונה ספרים מושאלים לחבר MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Member.GetAge">
+            <summary>
+            Get member age if date of birth is available
+            קבלת גיל החבר אם תאריך הלידה זמין
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Member.GetMembershipDuration">
+            <summary>
+            Get membership duration in MyCompany library
+            קבלת משך החברות בספרייה MyCompany
+            </summary>
+            <returns>Time span since joining</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.Member.ToString">
+            <summary>
+            Convert member to string representation for MyCompany reports
+            המרת חבר לייצוג מחרוזת לדוחות MyCompany
+            </summary>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Models.MemberPreferences">
+            <summary>
+            Member preferences in MyCompany library system
+            העדפות חבר במערכת ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.MemberPreferences.PreferredCategories">
+            <summary>
+            Preferred book categories in MyCompany library
+            קטגוריות ספרים מועדפות בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.MemberPreferences.PreferredLanguage">
+            <summary>
+            Preferred language for books in MyCompany system
+            שפה מועדפת לספרים במערכת MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.MemberPreferences.EmailNotifications">
+            <summary>
+            Email notifications enabled for MyCompany member
+            התראות דוא"ל מופעלות לחבר MyCompany
+            </summary>
+        </member>
+        <member name="P:MyCompany.LibraryManagement.Models.MemberPreferences.SmsNotifications">
+            <summary>
+            SMS notifications enabled for MyCompany member
+            התראות SMS מופעלות לחבר MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Models.MemberPreferences.AddPreferredCategory(System.String)">
+            <summary>
+            Add preferred category for MyCompany member
+            הוספת קטגוריה מועדפת לחבר MyCompany
+            </summary>
+            <param name="category">Category to add</param>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Program">
+            <summary>
+            MyCompany Library Management System
+            מערכת ניהול ספרייה של MyCompany
+            Main application class for MyCompany's library management platform
+            מחלקה ראשית לפלטפורמת ניהול הספרייה של MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Program.Main(System.String[])">
+            <summary>
+            Main entry point for MyCompany Library Management System
+            נקודת כניסה ראשית למערכת ניהול הספרייה של MyCompany
+            </summary>
+            <param name="args">Command line arguments</param>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Create host builder for MyCompany application
+            יצירת בונה host ליישום MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Program.InitializeKYKYSystem(MyCompany.LibraryManagement.Services.IBookService,MyCompany.LibraryManagement.Services.IMemberService,MyCompany.LibraryManagement.Services.ILoanService)">
+            <summary>
+            Initialize MyCompany library system with sample data
+            אתחול מערכת ספרייה MyCompany עם נתוני דוגמה
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Program.SimulateKYKYLibraryActivity(MyCompany.LibraryManagement.Services.IBookService,MyCompany.LibraryManagement.Services.IMemberService,MyCompany.LibraryManagement.Services.ILoanService)">
+            <summary>
+            Simulate library activity in MyCompany system
+            סימולציה של פעילות ספרייה במערכת MyCompany
+            </summary>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Services.IBookService">
+            <summary>
+            Book Service interface for MyCompany Library Management System
+            ממשק שירות ספרים למערכת ניהול הספרייה של MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.IBookService.AddBookAsync(MyCompany.LibraryManagement.Models.Book)">
+            <summary>
+            Add new book to MyCompany library catalog
+            הוספת ספר חדש לקטלוג ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.IBookService.GetAllBooksAsync">
+            <summary>
+            Get all books from MyCompany catalog
+            קבלת כל הספרים מקטלוג MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.IBookService.GetTotalBooksCountAsync">
+            <summary>
+            Get total count of books in MyCompany library
+            קבלת ספירה כוללת של ספרים בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.IBookService.GetBookByIdAsync(System.Int32)">
+            <summary>
+            Find book by ID in MyCompany system
+            חיפוש ספר לפי מזהה במערכת MyCompany
+            </summary>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Services.BookService">
+            <summary>
+            Book Service implementation for MyCompany Library Management System
+            מימוש שירות ספרים למערכת ניהול הספרייה של MyCompany
+            This service handles all book-related operations for MyCompany library
+            שירות זה מטפל בכל הפעולות הקשורות לספרים של ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.BookService.#ctor">
+            <summary>
+            Constructor for MyCompany Book Service
+            בנאי לשירות ספרי MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.BookService.AddBookAsync(MyCompany.LibraryManagement.Models.Book)">
+            <summary>
+            Add new book to MyCompany library catalog
+            הוספת ספר חדש לקטלוג ספרייה MyCompany
+            </summary>
+            <param name="book">הספר להוספה - Book to add</param>
+            <returns>הספר שנוסף - Added book</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.BookService.GetAllBooksAsync">
+            <summary>
+            Get all books from MyCompany catalog
+            קבלת כל הספרים מקטלוג MyCompany
+            </summary>
+            <returns>אוסף ספרי MyCompany - Collection of MyCompany books</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.BookService.GetTotalBooksCountAsync">
+            <summary>
+            Get total count of books in MyCompany library
+            קבלת ספירה כוללת של ספרים בספרייה MyCompany
+            </summary>
+            <returns>מספר הספרים - Number of books</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.BookService.GetBookByIdAsync(System.Int32)">
+            <summary>
+            Find book by ID in MyCompany system
+            חיפוש ספר לפי מזהה במערכת MyCompany
+            </summary>
+            <param name="id">מזהה הספר - Book ID</param>
+            <returns>הספר או null - Book or null</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.BookService.SearchBooksByTitleAsync(System.String)">
+            <summary>
+            Search books by title in MyCompany catalog
+            חיפוש ספרים לפי כותרת בקטלוג MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.BookService.UpdateBookAvailabilityAsync(System.Int32,System.Boolean)">
+            <summary>
+            Update book availability in MyCompany system
+            עדכון זמינות ספר במערכת MyCompany
+            </summary>
+            <param name="bookId">Book ID to update</param>
+            <param name="isAvailable">New availability status</param>
+            <returns>True if updated successfully</returns>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Services.IMemberService">
+            <summary>
+            Member Service interface for MyCompany Library Management System
+            ממשק שירות חברים למערכת ניהול הספרייה של MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.IMemberService.AddMemberAsync(MyCompany.LibraryManagement.Models.Member)">
+            <summary>
+            Add new member to MyCompany library
+            הוספת חבר חדש לספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.IMemberService.GetAllMembersAsync">
+            <summary>
+            Get all members from MyCompany library
+            קבלת כל החברים מספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.IMemberService.GetTotalMembersCountAsync">
+            <summary>
+            Get total count of members in MyCompany library
+            קבלת ספירה כוללת של חברים בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.IMemberService.GetMemberByIdAsync(System.Int32)">
+            <summary>
+            Find member by ID in MyCompany system
+            חיפוש חבר לפי מזהה במערכת MyCompany
+            </summary>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Services.ILoanService">
+            <summary>
+            Member Service interface for MyCompany Library Management System
+            ממשק שירות הזמנות למערכת ניהול הספרייה של MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.ILoanService.CreateLoanAsync(System.Int32,System.Int32)">
+            <summary>
+            Create new loan in MyCompany library system
+            יצירת השאלה חדשה במערכת ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Services.MemberService">
+            <summary>
+            Member Service implementation for MyCompany Library Management System
+            מימוש שירות חברים למערכת ניהול הספרייה של MyCompany
+            This service handles all member-related operations for MyCompany library
+            שירות זה מטפל בכל הפעולות הקשורות לחברים של ספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.MemberService.#ctor">
+            <summary>
+            Constructor for MyCompany Member Service
+            בנאי לשירות חברי MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.MemberService.AddMemberAsync(MyCompany.LibraryManagement.Models.Member)">
+            <summary>
+            Add new member to MyCompany library
+            הוספת חבר חדש לספרייה MyCompany
+            </summary>
+            <param name="member">החבר להוספה - Member to add</param>
+            <returns>החבר שנוסף - Added member</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.MemberService.GetAllMembersAsync">
+            <summary>
+            Get all members from MyCompany library
+            קבלת כל החברים מספרייה MyCompany
+            </summary>
+            <returns>אוסף חברי MyCompany - Collection of MyCompany members</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.MemberService.GetTotalMembersCountAsync">
+            <summary>
+            Get total count of members in MyCompany library
+            קבלת ספירה כוללת של חברים בספרייה MyCompany
+            </summary>
+            <returns>מספר החברים - Number of members</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.MemberService.GetMemberByIdAsync(System.Int32)">
+            <summary>
+            Find member by ID in MyCompany system
+            חיפוש חבר לפי מזהה במערכת MyCompany
+            </summary>
+            <param name="id">מזהה החבר - Member ID</param>
+            <returns>החבר או null - Member or null</returns>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.MemberService.SearchMembersByNameAsync(System.String)">
+            <summary>
+            Search members by name in MyCompany library
+            חיפוש חברים לפי שם בספרייה MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.MemberService.UpdateMemberStatusAsync(System.Int32,System.Boolean)">
+            <summary>
+            Update member status in MyCompany system
+            עדכון סטטוס חבר במערכת MyCompany
+            </summary>
+            <param name="memberId">Member ID to update</param>
+            <param name="isActive">New active status</param>
+            <returns>True if updated successfully</returns>
+        </member>
+        <member name="T:MyCompany.LibraryManagement.Services.LoanService">
+            <summary>
+            Loan Service implementation for MyCompany Library Management System
+            מימוש שירות השאלות למערכת ניהול הספרייה של MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.LoanService.#ctor(MyCompany.LibraryManagement.Services.IBookService,MyCompany.LibraryManagement.Services.IMemberService)">
+            <summary>
+            Constructor for MyCompany Loan Service
+            בנאי לשירות השאלות MyCompany
+            </summary>
+        </member>
+        <member name="M:MyCompany.LibraryManagement.Services.LoanService.CreateLoanAsync(System.Int32,System.Int32)">
+            <summary>
+            Create new loan in MyCompany library system
+            יצירת השאלה חדשה במערכת ספרייה MyCompany
+            </summary>
+        </member>
+    </members>
+</doc>
