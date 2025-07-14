@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Anonimization")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+791e1f081b3f9ace0bd27f07d047b4b33487fab7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+caa86f10a494111e029cdd4141debd1e56dba116")]
 [assembly: System.Reflection.AssemblyProductAttribute("Anonimization")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Anonimization")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
